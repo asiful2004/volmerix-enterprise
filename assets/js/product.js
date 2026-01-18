@@ -285,12 +285,12 @@ class ProductPage {
                     whatsapp: '+1234567890 or username',
                     telegram: '@username or +1234567890',
                     discord: 'username#1234 or User ID',
-                    email: 'Already provided above'
+                    kakaotalk: 'KakaoTalk ID or phone number'
                 };
 
                 if (whatsappInput) {
                     whatsappInput.placeholder = placeholders[method] || 'Enter contact details';
-                    whatsappInput.required = method !== 'email';
+                    whatsappInput.required = method !== 'kakaotalk';
                 }
             });
         }

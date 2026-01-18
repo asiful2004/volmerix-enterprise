@@ -2,11 +2,11 @@
 
 const translations = {
     en: {
-        'hero-title': 'Volmerix Enterprise',
+        'hero-title': 'Volmerix',
         'hero-subtitle': 'Your Trusted Subscription Supplier',
         'get-started': 'Get Started Now',
         'featured-plans': 'Featured Plans',
-        'why-choose': 'Why Choose Volmerix Enterprise',
+        'why-choose': 'Why Choose Volmerix',
         'fast-fulfillment': 'Fast Order Fulfillment',
         'fast-fulfillment-desc': '24h delivery',
         'premium-accounts': 'Premium Accounts Only',
@@ -43,7 +43,7 @@ const translations = {
         'korean-safety-desc': 'All accounts are optimized for Korean region usage.',
         'refund-policy': 'Refund Policy',
         'refund-policy-desc': 'Refunds available within 24 hours if account is not activated.',
-        'welcome-about': 'Welcome to Volmerix Enterprise',
+        'welcome-about': 'Welcome to Volmerix',
         'about-content': 'We are your trusted partner for premium subscription services, specializing in high-quality accounts with fast delivery and excellent customer support.',
         'premium-google': 'Premium Google Accounts',
         'fast-activation': 'Fast Activation',
@@ -62,11 +62,11 @@ const translations = {
         'actions': 'Actions'
     },
     kr: {
-        'hero-title': '볼메릭스 엔터프라이즈',
+        'hero-title': '볼메릭스',
         'hero-subtitle': '신뢰할 수 있는 구독 공급업체',
         'get-started': '지금 시작하세요',
         'featured-plans': '추천 플랜',
-        'why-choose': '볼메릭스 엔터프라이즈를 선택하는 이유',
+        'why-choose': '볼메릭스를 선택하는 이유',
         'fast-fulfillment': '빠른 주문 처리',
         'fast-fulfillment-desc': '24시간 배송',
         'premium-accounts': '프리미엄 계정만',
@@ -103,7 +103,7 @@ const translations = {
         'korean-safety-desc': '모든 계정은 한국 지역 사용에 최적화되어 있습니다.',
         'refund-policy': '환불 정책',
         'refund-policy-desc': '계정이 활성화되지 않은 경우 24시간 이내 환불 가능.',
-        'welcome-about': '볼메릭스 엔터프라이즈에 오신 것을 환영합니다',
+        'welcome-about': '볼메릭스에 오신 것을 환영합니다',
         'about-content': '저희는 고품질 계정, 빠른 배송, 우수한 고객 지원을 전문으로 하는 프리미엄 구독 서비스의 신뢰할 수 있는 파트너입니다.',
         'premium-google': '프리미엄 Google 계정',
         'fast-activation': '빠른 활성화',

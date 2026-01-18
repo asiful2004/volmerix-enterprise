@@ -3,87 +3,41 @@
 const products = [
     {
         id: 1,
-        name: 'YouTube Premium Account',
-        nameKr: 'YouTube 프리미엄 계정',
-        slug: 'youtube-premium',
-        price: 15000, // KRW
-        image: 'assets/images/product/youtube.png',
-        description: 'Full access to YouTube Premium with ad-free viewing and background play',
-        descriptionKr: '광고 없는 시청과 백그라운드 재생이 가능한 YouTube 프리미엄 전체 액세스',
+        name: 'YouTube Premium Individual – Yearly Plan',
+        nameKr: 'YouTube 프리미엄 개인용 - 연간 플랜',
+        slug: 'youtube-premium-individual-yearly',
+        price: 45000, // KRW
+        image: 'assets/images/product/youtube-in.png',
+        description: '🎯 PROFESSIONAL RESELLER SOLUTION\n\nVolmerix delivers professionally managed YouTube Premium Individual Yearly Plans designed specifically for resellers prioritizing stability, control, and long-term reliability.\n\n✨ KEY FEATURES:\n• India Region Accounts with controlled setup\n• Advanced Geo/IP Management for ban prevention\n• Full-Time Warranty during active period\n• Flexible & Secure Delivery Options\n• Renewal and Ongoing Maintenance Support\n• Wholesale Pricing optimized for strong profit margins\n\n🎪 PERFECT FOR:\nShop owners and digital service providers seeking safe, long-term subscription solutions.\n\n🏆 STABLE • MANAGED • RESELLER-READY',
+        descriptionKr: '🎯 전문 리셀러 솔루션\n\n볼메릭스는 안정성, 통제 및 장기 신뢰성을 우선시하는 리셀러를 위해 특별히 설계된 전문적으로 관리되는 YouTube 프리미엄 개인용 연간 플랜을 제공합니다.\n\n✨ 주요 기능:\n• 통제된 설정으로 인도 지역 계정\n• 금지 방지를 위한 고급 Geo/IP 관리\n• 활성 기간 동안 풀타임 보증\n• 유연하고 안전한 배송 옵션\n• 갱신 및 지속적인 유지 관리 지원\n• 강력한 이익 마진을 위해 최적화된 도매 가격\n\n🎪 완벽함:\n안전하고 장기적인 구독 솔루션을 찾는 상점 소유자와 디지털 서비스 제공업체.\n\n🏆 안정적 • 관리됨 • 리셀러 준비됨',
         featured: true,
-        rating: 4.8,
-        reviews: 127,
+        hot: true,
+        offer: true,
+        new: false,
+        bestseller: false,
+        limited: false,
+        rating: 4.9,
+        reviews: 4,
         category: 'subscription'
     },
     {
         id: 2,
-        name: 'Google One 100GB',
-        nameKr: 'Google One 100GB',
-        slug: 'google-one-100gb',
-        price: 25000,
+        name: 'YouTube Premium Family Plan',
+        nameKr: 'YouTube 프리미엄 패밀리 플랜',
+        slug: 'youtube-premium-family-monthly',
+        price: 25000, // KRW per month
         image: 'assets/images/product/youtube.png',
-        description: '100GB cloud storage with Google One benefits',
-        descriptionKr: 'Google One 혜택과 함께 100GB 클라우드 저장소',
+        description: '👨‍👩‍👧‍👦 PREMIUM FAMILY EXPERIENCE\n\nVolmerix provides carefully managed YouTube Premium Family Plans built for long-term use and maximum reseller reliability.\n\n🔧 WHAT YOU GET:\n• Professionally managed Geo/IP handling for stability\n• Continuous service warranty during active period\n• Controlled member allocation to prevent flags/bans\n• Assisted renewals and maintenance support\n• Fair wholesale rates for sustainable resale\n\n💼 DESIGNED FOR:\nShop owners valuing consistency, responsibility, and long-term trust.\n\n🌟 RELIABLE • PROFESSIONAL • TRUSTED',
+        descriptionKr: '👨‍👩‍👧‍👦 프리미엄 패밀리 경험\n\n볼메릭스는 장기 사용 및 최대 리셀러 신뢰성을 위해 신중하게 관리되는 YouTube 프리미엄 패밀리 플랜을 제공합니다.\n\n🔧 제공되는 것:\n• 안정성을 위한 전문적으로 관리되는 Geo/IP 처리\n• 활성 기간 동안 지속적인 서비스 보증\n• 플래그/금지를 방지하기 위한 통제된 멤버 할당\n• 지원 갱신 및 유지 관리 지원\n• 지속 가능한 재판매를 위한 공정한 도매 가격\n\n💼 설계 대상:\n일관성, 책임성 및 장기 신뢰를 중시하는 상점 소유자.\n\n🌟 신뢰할 수 있음 • 전문적 • 신뢰받음',
         featured: true,
-        rating: 4.9,
-        reviews: 89,
-        category: 'storage'
-    },
-    {
-        id: 3,
-        name: 'Netflix Premium Account',
-        nameKr: 'Netflix 프리미엄 계정',
-        slug: 'netflix-premium',
-        price: 20000,
-        image: 'assets/images/product/youtube.png',
-        description: 'Ultra HD streaming with premium Netflix account',
-        descriptionKr: '프리미엄 Netflix 계정으로 울트라 HD 스트리밍',
-        featured: true,
-        rating: 4.7,
-        reviews: 203,
-        category: 'entertainment'
-    },
-    {
-        id: 4,
-        name: 'Spotify Premium',
-        nameKr: 'Spotify 프리미엄',
-        slug: 'spotify-premium',
-        price: 12000,
-        image: 'assets/images/product/youtube.png',
-        description: 'Ad-free music streaming with offline downloads',
-        descriptionKr: '오프라인 다운로드와 함께 광고 없는 음악 스트리밍',
-        featured: false,
-        rating: 4.6,
-        reviews: 156,
-        category: 'music'
-    },
-    {
-        id: 5,
-        name: 'Adobe Creative Cloud',
-        nameKr: 'Adobe Creative Cloud',
-        slug: 'adobe-creative-cloud',
-        price: 35000,
-        image: 'assets/images/product/youtube.png',
-        description: 'Full Adobe Creative Cloud suite access',
-        descriptionKr: '전체 Adobe Creative Cloud 제품군 액세스',
-        featured: true,
+        hot: false,
+        offer: true,
+        new: true,
+        bestseller: true,
+        limited: false,
         rating: 4.8,
-        reviews: 67,
-        category: 'software'
-    },
-    {
-        id: 6,
-        name: 'Microsoft 365 Personal',
-        nameKr: 'Microsoft 365 개인용',
-        slug: 'microsoft-365-personal',
-        price: 18000,
-        image: 'assets/images/product/youtube.png',
-        description: 'One year access to Microsoft 365 Personal',
-        descriptionKr: 'Microsoft 365 개인용 1년 액세스',
-        featured: false,
-        rating: 4.5,
-        reviews: 94,
-        category: 'office'
+        reviews: 12,
+        category: 'subscription'
     }
 ];
 
@@ -108,6 +62,69 @@ const testimonials = [
         textKr: '프리미엄 품질 계정. 지금까지 문제 없음.',
         author: 'Lee M.',
         platform: 'Facebook'
+    },
+    {
+        id: 4,
+        text: 'Outstanding customer support! They helped me instantly.',
+        textKr: '탁월한 고객 지원! 즉시 도움을 받았습니다.',
+        author: 'Choi H.',
+        platform: 'WhatsApp'
+    },
+    {
+        id: 5,
+        text: 'Best prices for premium accounts. Worth every penny!',
+        textKr: '프리미엄 계정에 최고의 가격. 모든 페니 가치가 있습니다!',
+        author: 'Jung W.',
+        platform: 'Discord'
+    },
+    {
+        id: 6,
+        text: 'Super fast activation. Working perfectly in Korea.',
+        textKr: '초고속 활성화. 한국에서 완벽하게 작동합니다.',
+        author: 'Kang M.',
+        platform: 'Telegram'
+    },
+    {
+        id: 7,
+        text: 'Trusted seller for over a year. Never disappointed.',
+        textKr: '1년 넘게 신뢰할 수 있는 판매자. 절대 실망시키지 않습니다.',
+        author: 'Shin Y.',
+        platform: 'Facebook'
+    },
+    {
+        id: 8,
+        text: 'Excellent quality and instant delivery. 5 stars!',
+        textKr: '우수한 품질과 즉시 배송. 5성!',
+        author: 'Yoo S.',
+        platform: 'Discord'
+    },
+    {
+        id: 9,
+        text: 'Great for resellers. Bulk orders processed quickly.',
+        textKr: '리셀러에게 훌륭합니다. 대량 주문이 빠르게 처리됩니다.',
+        author: 'Lim K.',
+        platform: 'WhatsApp'
+    },
+    {
+        id: 10,
+        text: 'Professional service with Korean region optimization.',
+        textKr: '한국 지역 최적화로 전문적인 서비스.',
+        author: 'Han J.',
+        platform: 'Telegram'
+    },
+    {
+        id: 11,
+        text: 'Been a loyal customer for months. Always satisfied!',
+        textKr: '몇 달 동안 충성스러운 고객입니다. 항상 만족!',
+        author: 'Oh D.',
+        platform: 'Facebook'
+    },
+    {
+        id: 12,
+        text: 'Quick response to all my questions. Very helpful.',
+        textKr: '모든 질문에 빠른 응답. 매우 도움이 됩니다.',
+        author: 'Seo A.',
+        platform: 'Discord'
     }
 ];
 
@@ -158,14 +175,39 @@ function renderProductCard(product, featured = false, context = 'shop') {
     const name = lang === 'kr' ? product.nameKr : product.name;
     const description = lang === 'kr' ? product.descriptionKr : product.description;
 
+    // Generate single circular tag based on priority (only one tag per product)
+    let tagHtml = '';
+
+    // Tag priority order and styling (highest priority first)
+    const tagConfig = [
+        { key: 'hot', text: 'HOT', style: 'bg-red-500 text-white' },
+        { key: 'offer', text: 'OFFER', style: 'bg-yellow-500 text-white' },
+        { key: 'new', text: 'NEW', style: 'bg-green-500 text-white' },
+        { key: 'featured', text: 'FEATURED', style: 'bg-purple-500 text-white' },
+        { key: 'bestseller', text: 'BESTSELLER', style: 'bg-blue-500 text-white' },
+        { key: 'limited', text: 'LIMITED', style: 'bg-orange-500 text-white' }
+    ];
+
+    // Find first active tag (highest priority)
+    const activeTag = tagConfig.find(tag => product[tag.key]);
+
+    // Generate circular tag HTML
+    if (activeTag) {
+        tagHtml = `<div class="absolute top-2 left-2 z-10 transition-none pointer-events-none">
+            <span class="inline-flex items-center justify-center w-12 h-12 ${activeTag.style} text-xs font-bold rounded-full shadow-lg border-2 border-white transition-none">
+                ${activeTag.text}
+            </span>
+        </div>`;
+    }
+
     // All pages: Buy Now redirects to product page for better user flow
     let buttonsHtml = `<button onclick="viewProduct(${product.id})" class="bg-purple-600 hover:bg-purple-700 text-white px-6 py-2 rounded transition duration-300" data-i18n="buy-now">Buy Now</button>`;
 
     return `
-        <div class="product-card bg-white rounded-lg shadow-md overflow-hidden flex-shrink-0 w-80">
-            ${featured ? '<div class="bg-purple-600 text-white text-xs px-2 py-1 text-center font-medium">FEATURED</div>' : ''}
+        <div class="product-card relative bg-white rounded-lg shadow-md overflow-hidden flex-shrink-0 w-80">
             <div class="aspect-w-4 aspect-h-3">
                 <img src="${product.image}" alt="${name}" class="w-full h-48 object-cover" onerror="this.src='assets/images/product/youtube.png'">
+                ${tagHtml}
             </div>
             <div class="p-6 flex flex-col flex-1">
                 <h3 class="text-xl font-bold mb-2 line-clamp-2 min-h-[3.5rem] leading-tight">${name}</h3>
@@ -246,6 +288,97 @@ function buyNow(productId) {
     });
 }
 
+// Testimonials slider functionality
+class TestimonialsSlider {
+    constructor() {
+        this.currentIndex = 0;
+        this.autoPlayInterval = null;
+        this.autoPlayDelay = 4000; // 4 seconds
+        this.init();
+    }
+
+    init() {
+        this.renderDots();
+        this.setupAutoPlay();
+        this.setupDotNavigation();
+        this.updateActiveDot();
+    }
+
+    renderDots() {
+        const dotsContainer = document.getElementById('testimonial-dots');
+        if (!dotsContainer) return;
+
+        const dots = testimonials.map((_, index) => `
+            <button class="w-3 h-3 rounded-full transition-all duration-300 ${index === 0 ? 'bg-purple-600' : 'bg-gray-300 hover:bg-gray-400'}" data-slide="${index}"></button>
+        `).join('');
+
+        dotsContainer.innerHTML = dots;
+    }
+
+    setupAutoPlay() {
+        this.autoPlayInterval = setInterval(() => {
+            this.nextSlide();
+        }, this.autoPlayDelay);
+    }
+
+    setupDotNavigation() {
+        const dotsContainer = document.getElementById('testimonial-dots');
+        if (!dotsContainer) return;
+
+        dotsContainer.addEventListener('click', (e) => {
+            if (e.target.matches('[data-slide]')) {
+                const slideIndex = parseInt(e.target.getAttribute('data-slide'));
+                this.goToSlide(slideIndex);
+                this.resetAutoPlay();
+            }
+        });
+    }
+
+    goToSlide(index) {
+        const carousel = document.getElementById('testimonials-carousel');
+        if (!carousel) return;
+
+        this.currentIndex = index;
+        const slideWidth = carousel.children[0]?.offsetWidth || 320;
+        const scrollPosition = index * (slideWidth + 24); // 24px is the gap
+
+        carousel.scrollTo({
+            left: scrollPosition,
+            behavior: 'smooth'
+        });
+
+        this.updateActiveDot();
+    }
+
+    nextSlide() {
+        const nextIndex = (this.currentIndex + 1) % testimonials.length;
+        this.goToSlide(nextIndex);
+    }
+
+    updateActiveDot() {
+        const dots = document.querySelectorAll('#testimonial-dots button');
+        dots.forEach((dot, index) => {
+            if (index === this.currentIndex) {
+                dot.className = 'w-3 h-3 rounded-full bg-purple-600 transition-all duration-300';
+            } else {
+                dot.className = 'w-3 h-3 rounded-full bg-gray-300 hover:bg-gray-400 transition-all duration-300';
+            }
+        });
+    }
+
+    resetAutoPlay() {
+        clearInterval(this.autoPlayInterval);
+        this.setupAutoPlay();
+    }
+
+    destroy() {
+        clearInterval(this.autoPlayInterval);
+    }
+}
+
+// Global testimonials slider instance
+let testimonialsSlider = null;
+
 // Initialize featured products and testimonials on home page
 function initHomePage() {
     const featuredSlider = document.getElementById('featured-slider');
@@ -258,6 +391,12 @@ function initHomePage() {
 
     if (testimonialsCarousel) {
         testimonialsCarousel.innerHTML = testimonials.map(testimonial => renderTestimonial(testimonial)).join('');
+
+        // Initialize testimonials slider
+        if (testimonialsSlider) {
+            testimonialsSlider.destroy();
+        }
+        testimonialsSlider = new TestimonialsSlider();
     }
 
     // Update translations for dynamically added content

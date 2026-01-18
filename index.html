@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Volmerix Enterprise - Your Trusted Subscription Supplier</title>
+    <title>Volmerix - Your Trusted Subscription Supplier</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
@@ -91,10 +91,17 @@
     <section class="py-16 bg-white">
         <div class="container mx-auto px-4 text-center">
             <h2 class="text-3xl font-bold mb-8" data-i18n="satisfied-customers">Satisfied Customers</h2>
-            <div class="flex overflow-x-auto space-x-6 pb-4" id="testimonials-carousel">
-                <!-- Testimonials will be inserted by JS -->
+            <div class="relative">
+                <div class="flex overflow-x-auto space-x-6 pb-6 scrollbar-hide" id="testimonials-carousel" style="scroll-behavior: smooth;">
+                    <!-- Testimonials will be inserted by JS -->
+                </div>
+
+                <!-- Dot Indicators -->
+                <div class="flex justify-center space-x-2 mt-4" id="testimonial-dots">
+                    <!-- Dots will be inserted by JS -->
+                </div>
             </div>
-            <p class="text-gray-600 mt-4" data-i18n="trusted-by">Trusted by 100+ customers</p>
+            <p class="text-gray-600 mt-6" data-i18n="trusted-by">Trusted by 100+ customers</p>
         </div>
     </section>
 
