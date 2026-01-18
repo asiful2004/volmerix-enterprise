@@ -102,11 +102,8 @@ class ContactForm {
 }
 
 // Initialize contact form when DOM is loaded
-if (!window.contactFormInitialized) {
-    window.contactFormInitialized = true;
-    document.addEventListener('DOMContentLoaded', () => {
-        if (document.getElementById('contact-form')) {
-            new ContactForm();
-        }
-    });
-}
+document.addEventListener('DOMContentLoaded', () => {
+    if (document.getElementById('contact-form')) {
+        new ContactForm();
+    }
+});

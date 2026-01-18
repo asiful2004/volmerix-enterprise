@@ -134,7 +134,7 @@ class AdminPanel {
                     <button onclick="viewFullMessage('${message.id}')" class="text-blue-600 hover:text-blue-900 mr-3">
                         View
                     </button>
-                    <button onclick="deleteMessage('${message.id}')" class="text-red-600 hover:text-red-900">
+                    <button onclick="deleteMessage('${message.id}')" class="text-purple-600 hover:text-purple-900">
                         Delete
                     </button>
                 </td>
@@ -342,11 +342,8 @@ function deleteMessage(messageId) {
 }
 
 // Initialize admin panel when DOM is loaded
-if (!window.adminPanelInitialized) {
-    window.adminPanelInitialized = true;
-    document.addEventListener('DOMContentLoaded', () => {
-        if (document.getElementById('messages-table')) {
-            window.adminPanel = new AdminPanel();
-        }
-    });
-}
+document.addEventListener('DOMContentLoaded', () => {
+    if (document.getElementById('messages-table')) {
+        window.adminPanel = new AdminPanel();
+    }
+});

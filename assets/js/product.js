@@ -543,11 +543,8 @@ class ProductPage {
 }
 
 // Initialize product page when DOM is loaded
-if (!window.productPageInitialized) {
-    window.productPageInitialized = true;
-    document.addEventListener('DOMContentLoaded', () => {
-        if (document.getElementById('product-details')) {
-            window.productPage = new ProductPage();
-        }
-    });
-}
+document.addEventListener('DOMContentLoaded', () => {
+    if (document.getElementById('product-details')) {
+        window.productPage = new ProductPage();
+    }
+});

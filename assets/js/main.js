@@ -1,28 +1,71 @@
 // Main JavaScript file for Volmerix Enterprise
 
-// Prevent multiple initializations
-if (window.volmerixInitialized) {
-    console.log('Volmerix already initialized, skipping...');
-} else {
-    window.volmerixInitialized = true;
+// Global initialization function
+function initializeVolmerix() {
+    console.log('Initializing Volmerix Enterprise...');
 
-    // Global initialization
-    document.addEventListener('DOMContentLoaded', function() {
-        console.log('Volmerix Enterprise initialized');
-
-        // Ensure all modules are loaded
-        const checkModules = () => {
-            if (typeof i18n !== 'undefined' &&
-                typeof currencyManager !== 'undefined' &&
-                typeof createNavbar !== 'undefined') {
-                console.log('All modules loaded successfully');
-            }
+    // Ensure all modules are loaded with proper error handling
+    const checkModules = () => {
+        const modules = {
+            i18n: typeof i18n !== 'undefined',
+            currencyManager: typeof currencyManager !== 'undefined',
+            createNavbar: typeof createNavbar !== 'undefined',
+            products: typeof products !== 'undefined'
         };
 
-        // Check after a short delay to ensure all scripts are loaded
-        setTimeout(checkModules, 100);
-    });
+        const loadedModules = Object.keys(modules).filter(key => modules[key]);
+        const missingModules = Object.keys(modules).filter(key => !modules[key]);
+
+        console.log(`Modules loaded: ${loadedModules.join(', ')}`);
+        if (missingModules.length > 0) {
+            console.warn(`Missing modules: ${missingModules.join(', ')}`);
+        }
+
+        // Initialize components even if some modules are missing
+        try {
+            // Always try to initialize navbar
+            if (typeof createNavbar === 'function') {
+                createNavbar();
+            }
+
+            // Initialize page-specific components
+            if (document.getElementById('featured-slider') && typeof initHomePage === 'function') {
+                initHomePage();
+            }
+
+            if (document.getElementById('products-container') && typeof ShopManager === 'function') {
+                new ShopManager();
+            }
+
+            if (document.getElementById('contact-form') && typeof initializeContactForm === 'function') {
+                initializeContactForm();
+            }
+
+            if (document.getElementById('messages-table') && typeof AdminPanel === 'function') {
+                window.adminPanel = new AdminPanel();
+            }
+
+            if (document.getElementById('product-details') && typeof initializeProductPage === 'function') {
+                initializeProductPage();
+            }
+
+        } catch (error) {
+            console.error('Error during initialization:', error);
+        }
+    };
+
+    // Run initialization immediately if DOM is ready, otherwise wait
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', checkModules);
+    } else {
+        checkModules();
+    }
 }
+
+
+
+// Start initialization
+initializeVolmerix();
 
 // Utility functions
 function showLoading(element) {

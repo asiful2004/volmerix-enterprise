@@ -17,10 +17,10 @@ function createNavbar() {
 
                 <!-- Navigation Menu -->
                 <div class="hidden lg:flex items-center space-x-6 xl:space-x-8">
-                    <a href="index.html" class="text-gray-700 hover:text-red-600 transition duration-300 text-sm xl:text-base" data-i18n="home">Home</a>
-                    <a href="shop.html" class="text-gray-700 hover:text-red-600 transition duration-300 text-sm xl:text-base" data-i18n="shop">Shop</a>
-                    <a href="about.html" class="text-gray-700 hover:text-red-600 transition duration-300 text-sm xl:text-base" data-i18n="about">About Us</a>
-                    <a href="contact.html" class="text-gray-700 hover:text-red-600 transition duration-300 text-sm xl:text-base" data-i18n="contact">Contact Us</a>
+                    <a href="index.html" class="text-gray-700 hover:text-blue-600 transition duration-300 text-sm xl:text-base" data-i18n="home">Home</a>
+                    <a href="shop.html" class="text-gray-700 hover:text-blue-600 transition duration-300 text-sm xl:text-base" data-i18n="shop">Shop</a>
+                    <a href="about.html" class="text-gray-700 hover:text-purple-600 transition duration-300 text-sm xl:text-base" data-i18n="about">About Us</a>
+                    <a href="contact.html" class="text-gray-700 hover:text-blue-600 transition duration-300 text-sm xl:text-base" data-i18n="contact">Contact Us</a>
                 </div>
 
                 <!-- Right Side Controls -->
@@ -39,19 +39,19 @@ function createNavbar() {
 
                     <!-- Social Icons - Smaller on mobile -->
                     <div class="hidden sm:flex space-x-1 md:space-x-2">
-                        <a href="#" class="text-gray-600 hover:text-red-600 transition duration-300 p-1">
+                        <a href="#" class="text-gray-600 hover:text-blue-600 transition duration-300 p-1">
                             <i class="fab fa-discord text-sm md:text-lg"></i>
                         </a>
-                        <a href="#" class="text-gray-600 hover:text-red-600 transition duration-300 p-1">
+                        <a href="#" class="text-gray-600 hover:text-purple-600 transition duration-300 p-1">
                             <i class="fab fa-facebook text-sm md:text-lg"></i>
                         </a>
-                        <a href="#" class="text-gray-600 hover:text-red-600 transition duration-300 p-1">
+                        <a href="#" class="text-gray-600 hover:text-blue-600 transition duration-300 p-1">
                             <i class="fab fa-telegram text-sm md:text-lg"></i>
                         </a>
                     </div>
 
                     <!-- Mobile Menu Button -->
-                    <button id="mobile-menu-btn" class="lg:hidden text-gray-700 hover:text-red-600 p-2 -mr-2">
+                    <button id="mobile-menu-btn" class="lg:hidden text-gray-700 hover:text-blue-600 p-2 -mr-2">
                         <i class="fas fa-bars text-lg"></i>
                     </button>
                 </div>
@@ -61,10 +61,10 @@ function createNavbar() {
             <div id="mobile-menu" class="lg:hidden hidden mt-4 pb-4 border-t border-gray-200 bg-white">
                 <!-- Navigation Links -->
                 <div class="flex flex-col space-y-1 pt-4 px-2">
-                    <a href="index.html" class="text-gray-700 hover:text-red-600 hover:bg-red-50 transition duration-300 py-3 px-4 rounded-lg" data-i18n="home">Home</a>
-                    <a href="shop.html" class="text-gray-700 hover:text-red-600 hover:bg-red-50 transition duration-300 py-3 px-4 rounded-lg" data-i18n="shop">Shop</a>
-                    <a href="about.html" class="text-gray-700 hover:text-red-600 hover:bg-red-50 transition duration-300 py-3 px-4 rounded-lg" data-i18n="about">About Us</a>
-                    <a href="contact.html" class="text-gray-700 hover:text-red-600 hover:bg-red-50 transition duration-300 py-3 px-4 rounded-lg" data-i18n="contact">Contact Us</a>
+                    <a href="index.html" class="text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition duration-300 py-3 px-4 rounded-lg" data-i18n="home">Home</a>
+                    <a href="shop.html" class="text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition duration-300 py-3 px-4 rounded-lg" data-i18n="shop">Shop</a>
+                    <a href="about.html" class="text-gray-700 hover:text-purple-600 hover:bg-purple-50 transition duration-300 py-3 px-4 rounded-lg" data-i18n="about">About Us</a>
+                    <a href="contact.html" class="text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition duration-300 py-3 px-4 rounded-lg" data-i18n="contact">Contact Us</a>
                 </div>
 
                 <!-- Mobile Controls Separator -->
@@ -92,13 +92,13 @@ function createNavbar() {
 
                     <!-- Social Icons -->
                     <div class="flex justify-center space-x-4 pt-2">
-                        <a href="#" class="text-gray-600 hover:text-red-600 transition duration-300 p-2 bg-gray-50 rounded-full">
+                        <a href="#" class="text-gray-600 hover:text-blue-600 transition duration-300 p-2 bg-gray-50 rounded-full">
                             <i class="fab fa-discord text-lg"></i>
                         </a>
-                        <a href="#" class="text-gray-600 hover:text-red-600 transition duration-300 p-2 bg-gray-50 rounded-full">
+                        <a href="#" class="text-gray-600 hover:text-purple-600 transition duration-300 p-2 bg-gray-50 rounded-full">
                             <i class="fab fa-facebook text-lg"></i>
                         </a>
-                        <a href="#" class="text-gray-600 hover:text-red-600 transition duration-300 p-2 bg-gray-50 rounded-full">
+                        <a href="#" class="text-gray-600 hover:text-blue-600 transition duration-300 p-2 bg-gray-50 rounded-full">
                             <i class="fab fa-telegram text-lg"></i>
                         </a>
                     </div>
@@ -192,7 +192,4 @@ function setupMobileMenuClose() {
 }
 
 // Initialize navbar when DOM is loaded
-if (!window.navbarInitialized) {
-    window.navbarInitialized = true;
-    document.addEventListener('DOMContentLoaded', createNavbar);
-}
+document.addEventListener('DOMContentLoaded', createNavbar);

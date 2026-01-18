@@ -163,7 +163,7 @@ function renderProductCard(product, featured = false, context = 'shop') {
 
     return `
         <div class="product-card bg-white rounded-lg shadow-md overflow-hidden flex-shrink-0 w-80">
-            ${featured ? '<div class="bg-blue-600 text-white text-xs px-2 py-1 text-center font-medium">FEATURED</div>' : ''}
+            ${featured ? '<div class="bg-purple-600 text-white text-xs px-2 py-1 text-center font-medium">FEATURED</div>' : ''}
             <div class="aspect-w-4 aspect-h-3">
                 <img src="${product.image}" alt="${name}" class="w-full h-48 object-cover" onerror="this.src='assets/images/placeholder.php?w=400&h=300&text=Product'">
             </div>
@@ -177,7 +177,7 @@ function renderProductCard(product, featured = false, context = 'shop') {
                     <span class="text-sm text-gray-600">(${product.reviews} reviews)</span>
                 </div>
                 <div class="flex items-center justify-between mt-auto">
-                    <span class="text-2xl font-bold text-blue-600" data-price="${product.price}">${currencyManager ? currencyManager.formatPrice(product.price) : `₩${product.price.toLocaleString()}`}</span>
+                    <span class="text-2xl font-bold text-purple-600" data-price="${product.price}">${currencyManager ? currencyManager.formatPrice(product.price) : `₩${product.price.toLocaleString()}`}</span>
                     ${buttonsHtml}
                 </div>
             </div>
@@ -262,11 +262,8 @@ function initHomePage() {
 }
 
 // Initialize when DOM is loaded
-if (!window.productsInitialized) {
-    window.productsInitialized = true;
-    document.addEventListener('DOMContentLoaded', () => {
-        if (document.getElementById('featured-slider') || document.getElementById('testimonials-carousel')) {
-            initHomePage();
-        }
-    });
-}
+document.addEventListener('DOMContentLoaded', () => {
+    if (document.getElementById('featured-slider') || document.getElementById('testimonials-carousel')) {
+        initHomePage();
+    }
+});

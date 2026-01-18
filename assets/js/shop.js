@@ -87,12 +87,12 @@ class ShopManager {
         const container = document.getElementById('products-container');
 
         if (view === 'grid') {
-            gridView.className = 'px-4 py-2 bg-red-500 text-white rounded-l-lg hover:bg-red-600';
+            gridView.className = 'px-4 py-2 bg-purple-600 text-white rounded-l-lg hover:bg-purple-700';
             listView.className = 'px-4 py-2 bg-gray-200 text-gray-700 rounded-r-lg hover:bg-gray-300';
             container.className = 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6';
         } else {
             gridView.className = 'px-4 py-2 bg-gray-200 text-gray-700 rounded-l-lg hover:bg-gray-300';
-            listView.className = 'px-4 py-2 bg-red-500 text-white rounded-r-lg hover:bg-red-600';
+            listView.className = 'px-4 py-2 bg-purple-600 text-white rounded-r-lg hover:bg-purple-700';
             container.className = 'space-y-4';
         }
 
@@ -140,7 +140,7 @@ class ShopManager {
 
         return `
             <div class="product-card bg-white rounded-lg shadow-md overflow-hidden">
-                ${product.featured ? '<div class="bg-red-500 text-white text-xs px-2 py-1 text-center">FEATURED</div>' : ''}
+                ${product.featured ? '<div class="bg-purple-600 text-white text-xs px-2 py-1 text-center">FEATURED</div>' : ''}
                 <img src="${product.image}" alt="${name}" class="w-full h-48 object-cover" onerror="this.src='assets/images/placeholder.php?w=400&h=300&text=Product'">
                 <div class="p-6">
                     <h3 class="text-xl font-bold mb-2">${name}</h3>
@@ -152,8 +152,8 @@ class ShopManager {
                         <span class="text-sm text-gray-600">(${product.reviews})</span>
                     </div>
                     <div class="flex items-center justify-between">
-                        <span class="text-2xl font-bold text-red-600" data-price="${product.price}">${currencyManager ? currencyManager.formatPrice(product.price) : `₩${product.price.toLocaleString()}`}</span>
-                        <button onclick="viewProduct(${product.id})" class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded transition duration-300" data-i18n="buy-now">Buy Now</button>
+                        <span class="text-2xl font-bold text-purple-600" data-price="${product.price}">${currencyManager ? currencyManager.formatPrice(product.price) : `₩${product.price.toLocaleString()}`}</span>
+                        <button onclick="viewProduct(${product.id})" class="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded transition duration-300" data-i18n="buy-now">Buy Now</button>
                     </div>
                 </div>
             </div>
@@ -182,8 +182,8 @@ class ShopManager {
                                 </div>
                             </div>
                             <div class="text-right">
-                                <span class="text-3xl font-bold text-red-600 mb-4 block" data-price="${product.price}">${currencyManager ? currencyManager.formatPrice(product.price) : `₩${product.price.toLocaleString()}`}</span>
-                                <button onclick="viewProduct(${product.id})" class="bg-red-500 hover:bg-red-600 text-white px-6 py-2 rounded transition duration-300" data-i18n="buy-now">Buy Now</button>
+                                <span class="text-3xl font-bold text-purple-600 mb-4 block" data-price="${product.price}">${currencyManager ? currencyManager.formatPrice(product.price) : `₩${product.price.toLocaleString()}`}</span>
+                                <button onclick="viewProduct(${product.id})" class="bg-purple-600 hover:bg-purple-700 text-white px-6 py-2 rounded transition duration-300" data-i18n="buy-now">Buy Now</button>
                             </div>
                         </div>
                     </div>
