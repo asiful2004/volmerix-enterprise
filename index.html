@@ -32,20 +32,15 @@
         <div class="container mx-auto px-4">
             <h2 class="text-3xl font-bold text-center mb-12" data-i18n="featured-plans">Featured Plans</h2>
             <div class="relative">
-                <!-- Scroll Indicator -->
-                <div class="absolute right-4 top-1/2 transform -translate-y-1/2 z-10 hidden md:block">
-                    <div class="bg-blue-500 text-white p-2 rounded-full shadow-lg opacity-75 hover:opacity-100 transition-opacity">
-                        <i class="fas fa-chevron-right"></i>
-                    </div>
-                </div>
-
                 <!-- Featured Products Container -->
                 <div class="flex overflow-x-auto space-x-6 pb-4 scrollbar-hide" id="featured-slider" style="scroll-behavior: smooth;">
                     <!-- Featured products will be inserted by JS -->
                 </div>
 
-                <!-- Gradient Fade on Right -->
-                <div class="absolute right-0 top-0 bottom-4 w-20 bg-gradient-to-l from-white to-transparent pointer-events-none hidden md:block"></div>
+                <!-- Dot Indicators -->
+                <div class="flex justify-center space-x-2 mt-4" id="featured-dots">
+                    <!-- Dots will be inserted by JS -->
+                </div>
             </div>
         </div>
     </section>

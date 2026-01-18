@@ -43,20 +43,15 @@ const products = [
 
 const testimonials = [
     {
-        id: 1,
-        text: 'Amazing service! Got my account within hours.',
-        textKr: '놀라운 서비스! 몇 시간 만에 계정을 받았습니다.',
-        author: 'Kim J.',
-        platform: 'Discord'
+        image: 'assets/images/review-1.jpg',
+        alt: 'Customer Review 1'
     },
     {
-        id: 2,
-        text: 'Very reliable and fast delivery. Highly recommend!',
-        textKr: '매우 신뢰할 수 있고 빠른 배송. 강력 추천!',
-        author: 'Park S.',
-        platform: 'Telegram'
+        image: 'assets/images/review-2.jpg',
+        alt: 'Customer Review 2'
     },
     {
+<<<<<<< HEAD
         id: 3,
         text: 'Premium quality accounts. No issues so far.',
         textKr: '프리미엄 품질 계정. 지금까지 문제 없음.',
@@ -125,6 +120,30 @@ const testimonials = [
         textKr: '모든 질문에 빠른 응답. 매우 도움이 됩니다.',
         author: 'Seo A.',
         platform: 'Discord'
+=======
+        image: 'assets/images/review-3.jpg',
+        alt: 'Customer Review 3'
+    },
+    {
+        image: 'assets/images/review-4.jpg',
+        alt: 'Customer Review 4'
+    },
+    {
+        image: 'assets/images/review-5.jpg',
+        alt: 'Customer Review 5'
+    },
+    {
+        image: 'assets/images/review-6.jpg',
+        alt: 'Customer Review 6'
+    },
+    {
+        image: 'assets/images/review-7.jpg',
+        alt: 'Customer Review 7'
+    },
+    {
+        image: 'assets/images/review-8.jpg',
+        alt: 'Customer Review 8'
+>>>>>>> a95f29b (Complete website enhancement: South Korean translations, dot sliders, and image testimonials)
     }
 ];
 
@@ -228,16 +247,10 @@ function renderProductCard(product, featured = false, context = 'shop') {
 }
 
 function renderTestimonial(testimonial) {
-    const lang = typeof i18n !== 'undefined' ? i18n.currentLang : 'en';
-    const text = lang === 'kr' ? testimonial.textKr : testimonial.text;
-
     return `
-        <div class="bg-white shadow-md rounded-lg p-6 min-w-80 border border-gray-100">
-            <p class="text-gray-700 mb-4">"${text}"</p>
-            <div class="flex items-center justify-between">
-                <span class="font-bold text-gray-900">${testimonial.author}</span>
-                <span class="text-sm text-gray-500">${testimonial.platform}</span>
-            </div>
+        <div class="bg-white shadow-md rounded-lg overflow-hidden min-w-80 border border-gray-100">
+            <img src="${testimonial.image}" alt="${testimonial.alt}"
+                 class="w-full h-80 object-cover">
         </div>
     `;
 }
@@ -376,17 +389,125 @@ class TestimonialsSlider {
     }
 }
 
+<<<<<<< HEAD
 // Global testimonials slider instance
 let testimonialsSlider = null;
+=======
+// Featured Plans slider functionality
+class FeaturedSlider {
+    constructor() {
+        this.currentIndex = 0;
+        this.autoPlayInterval = null;
+        this.autoPlayDelay = 5000; // 5 seconds
+        this.init();
+    }
+
+    init() {
+        this.renderDots();
+        this.setupAutoPlay();
+        this.setupDotNavigation();
+        this.updateActiveDot();
+    }
+
+    renderDots() {
+        const dotsContainer = document.getElementById('featured-dots');
+        if (!dotsContainer) return;
+
+        // Calculate number of dots based on featured products (assuming 2 products per slide on mobile, 3 on desktop)
+        const featuredProducts = getFeaturedProducts();
+        const dotsCount = Math.ceil(featuredProducts.length / 2); // Show 2 dots for 2 products
+
+        const dots = Array.from({ length: dotsCount }, (_, index) => `
+            <button class="w-3 h-3 rounded-full transition-all duration-300 ${index === 0 ? 'bg-purple-600' : 'bg-gray-300 hover:bg-gray-400'}" data-slide="${index}"></button>
+        `).join('');
+
+        dotsContainer.innerHTML = dots;
+    }
+
+    setupAutoPlay() {
+        this.autoPlayInterval = setInterval(() => {
+            this.nextSlide();
+        }, this.autoPlayDelay);
+    }
+
+    setupDotNavigation() {
+        const dotsContainer = document.getElementById('featured-dots');
+        if (!dotsContainer) return;
+
+        dotsContainer.addEventListener('click', (e) => {
+            if (e.target.matches('[data-slide]')) {
+                const slideIndex = parseInt(e.target.getAttribute('data-slide'));
+                this.goToSlide(slideIndex);
+                this.resetAutoPlay();
+            }
+        });
+    }
+
+    goToSlide(index) {
+        const slider = document.getElementById('featured-slider');
+        if (!slider) return;
+
+        this.currentIndex = index;
+        const slideWidth = 320 + 24; // Product card width + gap
+        const scrollPosition = index * slideWidth;
+
+        slider.scrollTo({
+            left: scrollPosition,
+            behavior: 'smooth'
+        });
+
+        this.updateActiveDot();
+    }
+
+    nextSlide() {
+        const dotsContainer = document.getElementById('featured-dots');
+        if (!dotsContainer) return;
+
+        const totalSlides = dotsContainer.children.length;
+        const nextIndex = (this.currentIndex + 1) % totalSlides;
+        this.goToSlide(nextIndex);
+    }
+
+    updateActiveDot() {
+        const dots = document.querySelectorAll('#featured-dots button');
+        dots.forEach((dot, index) => {
+            if (index === this.currentIndex) {
+                dot.className = 'w-3 h-3 rounded-full bg-purple-600 transition-all duration-300';
+            } else {
+                dot.className = 'w-3 h-3 rounded-full bg-gray-300 hover:bg-gray-400 transition-all duration-300';
+            }
+        });
+    }
+
+    resetAutoPlay() {
+        clearInterval(this.autoPlayInterval);
+        this.setupAutoPlay();
+    }
+
+    destroy() {
+        clearInterval(this.autoPlayInterval);
+    }
+}
+
+// Global slider instances
+let testimonialsSlider = null;
+let featuredSlider = null;
+>>>>>>> a95f29b (Complete website enhancement: South Korean translations, dot sliders, and image testimonials)
 
 // Initialize featured products and testimonials on home page
 function initHomePage() {
-    const featuredSlider = document.getElementById('featured-slider');
+    const featuredSliderElement = document.getElementById('featured-slider');
     const testimonialsCarousel = document.getElementById('testimonials-carousel');
 
-    if (featuredSlider) {
+    if (featuredSliderElement) {
         const featuredProducts = getFeaturedProducts();
-        featuredSlider.innerHTML = featuredProducts.map(product => renderProductCard(product, true, 'home')).join('');
+        featuredSliderElement.innerHTML = featuredProducts.map(product => renderProductCard(product, true, 'home')).join('');
+
+        // Initialize featured slider
+        if (featuredSlider) {
+            featuredSlider.destroy();
+        }
+        featuredSlider = new FeaturedSlider();
     }
 
     if (testimonialsCarousel) {
