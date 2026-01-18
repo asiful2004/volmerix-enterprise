@@ -37,16 +37,24 @@ function initializeVolmerix() {
                 new ShopManager();
             }
 
-            if (document.getElementById('contact-form') && typeof initializeContactForm === 'function') {
-                initializeContactForm();
+            if (document.getElementById('contact-form') && typeof ContactForm === 'function') {
+                new ContactForm();
             }
 
             if (document.getElementById('messages-table') && typeof AdminPanel === 'function') {
                 window.adminPanel = new AdminPanel();
             }
 
-            if (document.getElementById('product-details') && typeof initializeProductPage === 'function') {
-                initializeProductPage();
+            if (document.getElementById('product-details') && typeof ProductPage === 'function') {
+                window.productPage = new ProductPage();
+            }
+
+            // Update i18n content after all components are loaded
+            if (typeof i18n !== 'undefined' && typeof i18n.updateContent === 'function') {
+                setTimeout(() => {
+                    i18n.updateContent();
+                    console.log('i18n content updated after component initialization');
+                }, 200);
             }
 
         } catch (error) {

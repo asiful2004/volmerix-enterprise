@@ -136,8 +136,13 @@ class I18n {
     }
 
     init() {
+        // Update content immediately on page load
         this.updateContent();
-        this.setupLanguageSwitch();
+
+        // Setup language switch after a short delay to ensure navbar is loaded
+        setTimeout(() => {
+            this.setupLanguageSwitch();
+        }, 100);
     }
 
     setLanguage(lang) {

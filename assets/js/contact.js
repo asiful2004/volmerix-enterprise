@@ -101,6 +101,9 @@ class ContactForm {
     }
 }
 
+// Make ContactForm class globally available
+window.ContactForm = ContactForm;
+
 // Initialize contact form when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     if (document.getElementById('contact-form')) {

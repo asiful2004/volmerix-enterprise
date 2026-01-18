@@ -7,7 +7,7 @@ const products = [
         nameKr: 'YouTube 프리미엄 계정',
         slug: 'youtube-premium',
         price: 15000, // KRW
-        image: 'assets/images/placeholder.php?w=400&h=300&text=YouTube+Premium',
+        image: 'assets/images/product/youtube.png',
         description: 'Full access to YouTube Premium with ad-free viewing and background play',
         descriptionKr: '광고 없는 시청과 백그라운드 재생이 가능한 YouTube 프리미엄 전체 액세스',
         featured: true,
@@ -21,7 +21,7 @@ const products = [
         nameKr: 'Google One 100GB',
         slug: 'google-one-100gb',
         price: 25000,
-        image: 'assets/images/placeholder.php?w=400&h=300&text=Google+One+100GB',
+        image: 'assets/images/product/youtube.png',
         description: '100GB cloud storage with Google One benefits',
         descriptionKr: 'Google One 혜택과 함께 100GB 클라우드 저장소',
         featured: true,
@@ -35,10 +35,10 @@ const products = [
         nameKr: 'Netflix 프리미엄 계정',
         slug: 'netflix-premium',
         price: 20000,
-        image: 'assets/images/placeholder.php?w=400&h=300&text=Netflix+Premium',
+        image: 'assets/images/product/youtube.png',
         description: 'Ultra HD streaming with premium Netflix account',
         descriptionKr: '프리미엄 Netflix 계정으로 울트라 HD 스트리밍',
-        featured: false,
+        featured: true,
         rating: 4.7,
         reviews: 203,
         category: 'entertainment'
@@ -49,7 +49,7 @@ const products = [
         nameKr: 'Spotify 프리미엄',
         slug: 'spotify-premium',
         price: 12000,
-        image: 'assets/images/placeholder.php?w=400&h=300&text=Spotify+Premium',
+        image: 'assets/images/product/youtube.png',
         description: 'Ad-free music streaming with offline downloads',
         descriptionKr: '오프라인 다운로드와 함께 광고 없는 음악 스트리밍',
         featured: false,
@@ -63,7 +63,7 @@ const products = [
         nameKr: 'Adobe Creative Cloud',
         slug: 'adobe-creative-cloud',
         price: 35000,
-        image: 'assets/images/placeholder.php?w=400&h=300&text=Adobe+CC',
+        image: 'assets/images/product/youtube.png',
         description: 'Full Adobe Creative Cloud suite access',
         descriptionKr: '전체 Adobe Creative Cloud 제품군 액세스',
         featured: true,
@@ -77,7 +77,7 @@ const products = [
         nameKr: 'Microsoft 365 개인용',
         slug: 'microsoft-365-personal',
         price: 18000,
-        image: 'assets/images/placeholder.php?w=400&h=300&text=Microsoft+365',
+        image: 'assets/images/product/youtube.png',
         description: 'One year access to Microsoft 365 Personal',
         descriptionKr: 'Microsoft 365 개인용 1년 액세스',
         featured: false,
@@ -165,7 +165,7 @@ function renderProductCard(product, featured = false, context = 'shop') {
         <div class="product-card bg-white rounded-lg shadow-md overflow-hidden flex-shrink-0 w-80">
             ${featured ? '<div class="bg-purple-600 text-white text-xs px-2 py-1 text-center font-medium">FEATURED</div>' : ''}
             <div class="aspect-w-4 aspect-h-3">
-                <img src="${product.image}" alt="${name}" class="w-full h-48 object-cover" onerror="this.src='assets/images/placeholder.php?w=400&h=300&text=Product'">
+                <img src="${product.image}" alt="${name}" class="w-full h-48 object-cover" onerror="this.src='assets/images/product/youtube.png'">
             </div>
             <div class="p-6 flex flex-col flex-1">
                 <h3 class="text-xl font-bold mb-2 line-clamp-2 min-h-[3.5rem] leading-tight">${name}</h3>
@@ -259,7 +259,17 @@ function initHomePage() {
     if (testimonialsCarousel) {
         testimonialsCarousel.innerHTML = testimonials.map(testimonial => renderTestimonial(testimonial)).join('');
     }
+
+    // Update translations for dynamically added content
+    setTimeout(() => {
+        if (typeof i18n !== 'undefined' && typeof i18n.updateContent === 'function') {
+            i18n.updateContent();
+        }
+    }, 50);
 }
+
+// Make initHomePage function globally available
+window.initHomePage = initHomePage;
 
 // Initialize when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {

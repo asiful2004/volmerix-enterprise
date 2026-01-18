@@ -31,6 +31,13 @@ class ProductPage {
         } else {
             this.showProductNotFound();
         }
+
+        // Update translations for dynamically added content
+        setTimeout(() => {
+            if (typeof i18n !== 'undefined' && typeof i18n.updateContent === 'function') {
+                i18n.updateContent();
+            }
+        }, 50);
     }
 
     displayProduct() {
@@ -541,6 +548,9 @@ class ProductPage {
         return div.innerHTML;
     }
 }
+
+// Make ProductPage class globally available
+window.ProductPage = ProductPage;
 
 // Initialize product page when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {

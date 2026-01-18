@@ -341,6 +341,9 @@ function deleteMessage(messageId) {
     }
 }
 
+// Make AdminPanel class globally available
+window.AdminPanel = AdminPanel;
+
 // Initialize admin panel when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     if (document.getElementById('messages-table')) {

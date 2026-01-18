@@ -131,6 +131,13 @@ class ShopManager {
         }
 
         this.updateResultsCount();
+
+        // Update translations for dynamically added content
+        setTimeout(() => {
+            if (typeof i18n !== 'undefined' && typeof i18n.updateContent === 'function') {
+                i18n.updateContent();
+            }
+        }, 50);
     }
 
     renderProductGrid(product) {
@@ -141,7 +148,7 @@ class ShopManager {
         return `
             <div class="product-card bg-white rounded-lg shadow-md overflow-hidden">
                 ${product.featured ? '<div class="bg-purple-600 text-white text-xs px-2 py-1 text-center">FEATURED</div>' : ''}
-                <img src="${product.image}" alt="${name}" class="w-full h-48 object-cover" onerror="this.src='assets/images/placeholder.php?w=400&h=300&text=Product'">
+                <img src="${product.image}" alt="${name}" class="w-full h-48 object-cover" onerror="this.src='assets/images/product/youtube.png'">
                 <div class="p-6">
                     <h3 class="text-xl font-bold mb-2">${name}</h3>
                     <p class="text-gray-600 mb-4 line-clamp-2">${description}</p>
@@ -168,7 +175,7 @@ class ShopManager {
         return `
             <div class="product-card bg-white rounded-lg shadow-md overflow-hidden">
                 <div class="flex">
-                    <img src="${product.image}" alt="${name}" class="w-48 h-48 object-cover" onerror="this.src='assets/images/placeholder.php?w=400&h=300&text=Product'">
+                    <img src="${product.image}" alt="${name}" class="w-48 h-48 object-cover" onerror="this.src='assets/images/product/youtube.png'">
                     <div class="flex-1 p-6">
                         <div class="flex items-start justify-between mb-4">
                             <div>
@@ -216,6 +223,9 @@ class ShopManager {
         }
     }
 }
+
+// Make ShopManager class globally available
+window.ShopManager = ShopManager;
 
 // Initialize shop when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
