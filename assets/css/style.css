@@ -1,0 +1,248 @@
+/* Color Palette System - Volmerix Enterprise */
+/* All website colors defined as CSS custom properties for easy management */
+
+:root {
+  /* ===== PRIMARY BRAND COLORS ===== */
+  /* Blue - Primary brand color */
+  --color-primary-blue: #2563eb;
+  --color-primary-blue-50: #eff6ff;
+  --color-primary-blue-100: #dbeafe;
+  --color-primary-blue-200: #bfdbfe;
+  --color-primary-blue-300: #93c5fd;
+  --color-primary-blue-400: #60a5fa;
+  --color-primary-blue-500: #3b82f6;
+  --color-primary-blue-600: #2563eb; /* Main primary blue */
+  --color-primary-blue-700: #1d4ed8;
+  --color-primary-blue-800: #1e40af;
+  --color-primary-blue-900: #1e3a8a;
+
+  /* Purple - Secondary brand color */
+  --color-primary-purple: #9333ea;
+  --color-primary-purple-50: #faf5ff;
+  --color-primary-purple-100: #f3e8ff;
+  --color-primary-purple-200: #e9d5ff;
+  --color-primary-purple-300: #d8b4fe;
+  --color-primary-purple-400: #c084fc;
+  --color-primary-purple-500: #a855f7;
+  --color-primary-purple-600: #9333ea; /* Main primary purple */
+  --color-primary-purple-700: #7c3aed;
+  --color-primary-purple-800: #6b21a8;
+  --color-primary-purple-900: #581c87;
+
+  /* ===== NEUTRAL COLORS ===== */
+  /* Gray scale for text and backgrounds */
+  --color-gray-50: #f9fafb;
+  --color-gray-100: #f3f4f6;
+  --color-gray-200: #e5e7eb;
+  --color-gray-300: #d1d5db;
+  --color-gray-400: #9ca3af;
+  --color-gray-500: #6b7280;
+  --color-gray-600: #4b5563;
+  --color-gray-700: #374151;
+  --color-gray-800: #1f2937;
+  --color-gray-900: #111827;
+
+  /* White and Black */
+  --color-white: #ffffff;
+  --color-black: #000000;
+
+  /* ===== SEMANTIC COLORS ===== */
+  /* Status and feedback colors */
+  --color-success: #10b981;
+  --color-success-50: #ecfdf5;
+  --color-success-100: #d1fae5;
+  --color-success-500: #10b981;
+  --color-success-600: #059669;
+  --color-success-700: #047857;
+
+  --color-warning: #f59e0b;
+  --color-warning-50: #fffbeb;
+  --color-warning-100: #fef3c7;
+  --color-warning-500: #f59e0b;
+  --color-warning-600: #d97706;
+  --color-warning-700: #b45309;
+
+  --color-error: #ef4444;
+  --color-error-50: #fef2f2;
+  --color-error-100: #fee2e2;
+  --color-error-500: #ef4444;
+  --color-error-600: #dc2626;
+  --color-error-700: #b91c1c;
+
+  /* ===== UI ELEMENT COLORS ===== */
+  /* Specific colors for UI components */
+  --color-button-primary: var(--color-primary-purple-600);
+  --color-button-primary-hover: var(--color-primary-purple-700);
+  --color-button-secondary: var(--color-gray-100);
+  --color-button-secondary-hover: var(--color-gray-200);
+
+  --color-link: var(--color-primary-blue-600);
+  --color-link-hover: var(--color-primary-purple-600);
+
+  --color-border: var(--color-gray-300);
+  --color-border-light: var(--color-gray-200);
+  --color-border-focus: var(--color-primary-blue-500);
+
+  /* ===== BACKGROUND COLORS ===== */
+  --color-bg-primary: var(--color-white);
+  --color-bg-secondary: var(--color-gray-50);
+  --color-bg-tertiary: var(--color-gray-100);
+  --color-bg-dark: var(--color-gray-900);
+
+  /* ===== TEXT COLORS ===== */
+  --color-text-primary: var(--color-gray-900);
+  --color-text-secondary: var(--color-gray-600);
+  --color-text-tertiary: var(--color-gray-500);
+  --color-text-inverse: var(--color-white);
+  --color-text-muted: var(--color-gray-400);
+
+  /* ===== SPECIAL COLORS ===== */
+  /* Colors for specific use cases */
+  --color-accent: var(--color-primary-purple-500);
+  --color-highlight: var(--color-primary-blue-100);
+  --color-overlay: rgba(0, 0, 0, 0.5);
+
+  /* ===== LEGACY COLOR SUPPORT ===== */
+  /* For backward compatibility with existing Tailwind classes */
+  --tw-ring-color: var(--color-primary-blue-500);
+}
+
+/* Custom styles for Volmerix Enterprise */
+
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* Hide scrollbar utility */
+.scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+
+/* Product card hover effects */
+.product-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+}
+
+/* Loading animation */
+.loading {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+/* Form styles */
+.form-input {
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-input:focus {
+    border-color: #dc2626;
+    box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+}
+
+/* Button hover effects */
+.btn-primary {
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(220, 38, 38, 0.3);
+}
+
+/* ===== COLOR UTILITY CLASSES ===== */
+/* Utility classes using the color palette variables */
+
+/* Background Colors */
+.bg-brand-blue { background-color: var(--color-primary-blue); }
+.bg-brand-purple { background-color: var(--color-primary-purple); }
+.bg-brand-blue-light { background-color: var(--color-primary-blue-100); }
+.bg-brand-purple-light { background-color: var(--color-primary-purple-100); }
+
+/* Text Colors */
+.text-brand-blue { color: var(--color-primary-blue); }
+.text-brand-purple { color: var(--color-primary-purple); }
+.text-brand-blue-light { color: var(--color-primary-blue-400); }
+.text-brand-purple-light { color: var(--color-primary-purple-400); }
+
+/* Border Colors */
+.border-brand-blue { border-color: var(--color-primary-blue); }
+.border-brand-purple { border-color: var(--color-primary-purple); }
+
+/* Hover Effects */
+.hover\:bg-brand-blue:hover { background-color: var(--color-primary-blue); }
+.hover\:bg-brand-purple:hover { background-color: var(--color-primary-purple); }
+.hover\:text-brand-blue:hover { color: var(--color-primary-blue); }
+.hover\:text-brand-purple:hover { color: var(--color-primary-purple); }
+
+/* Semantic Color Classes */
+.text-success { color: var(--color-success); }
+.text-warning { color: var(--color-warning); }
+.text-error { color: var(--color-error); }
+.bg-success { background-color: var(--color-success-100); }
+.bg-warning { background-color: var(--color-warning-100); }
+.bg-error { background-color: var(--color-error-100); }
+
+/* ===== THEME OVERRIDE CLASSES ===== */
+/* Classes to easily switch themes or override specific colors */
+
+.theme-blue {
+    --color-primary: var(--color-primary-blue);
+    --color-secondary: var(--color-primary-blue-700);
+}
+
+.theme-purple {
+    --color-primary: var(--color-primary-purple);
+    --color-secondary: var(--color-primary-purple-700);
+}
+
+.theme-mixed {
+    --color-primary: var(--color-primary-purple);
+    --color-secondary: var(--color-primary-blue);
+}

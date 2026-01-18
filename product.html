@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product - Volmerix Enterprise</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="bg-white">
+    <!-- Navbar -->
+    <nav id="navbar" class="bg-white shadow-lg sticky top-0 z-50 border-b border-gray-200">
+        <!-- Navbar content will be inserted by JS -->
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8 max-w-6xl">
+        <!-- Breadcrumb -->
+        <nav class="flex mb-8" aria-label="Breadcrumb">
+            <ol class="inline-flex items-center space-x-1 md:space-x-3">
+                <li class="inline-flex items-center">
+                    <a href="index.html" class="text-gray-700 hover:text-blue-600 transition duration-300">Home</a>
+                </li>
+                <li>
+                    <div class="flex items-center">
+                        <i class="fas fa-chevron-right text-gray-400 mx-2"></i>
+                        <a href="shop.html" class="text-gray-700 hover:text-blue-600 transition duration-300">Shop</a>
+                    </div>
+                </li>
+                <li aria-current="page">
+                    <div class="flex items-center">
+                        <i class="fas fa-chevron-right text-gray-400 mx-2"></i>
+                        <span class="text-gray-500" id="breadcrumb-product">Product</span>
+                    </div>
+                </li>
+            </ol>
+        </nav>
+
+        <!-- Product Content -->
+        <div class="grid lg:grid-cols-2 gap-8">
+            <!-- Left Column - Product Details -->
+            <div class="bg-white rounded-lg shadow-md p-8">
+                <div id="product-details">
+                    <!-- Product title will be inserted by JS -->
+                    <h1 class="text-3xl font-bold text-gray-900 mb-6" id="product-title">Loading...</h1>
+
+                    <!-- Product Image -->
+                    <div class="mb-8 flex justify-center">
+                        <img id="product-image" src="assets/images/placeholder.php?w=400&h=300&text=Loading+Product" alt="Product Image"
+                             class="w-full max-w-md h-64 object-cover rounded-lg shadow-md" onerror="this.src='assets/images/placeholder.php?w=400&h=300&text=Product+Image'">
+                    </div>
+
+                    <!-- Short Description -->
+                    <div class="mb-8">
+                        <h2 class="text-xl font-semibold text-gray-900 mb-4">Product Details</h2>
+                        <p class="text-gray-600 leading-relaxed" id="product-description">
+                            Loading product information...
+                        </p>
+                    </div>
+
+                    <!-- Features List -->
+                    <div class="mb-8">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-4">Features & Benefits</h3>
+                        <ul class="space-y-3" id="product-features">
+                            <!-- Features will be inserted by JS -->
+                        </ul>
+                    </div>
+
+                    <!-- Optional Info -->
+                    <div class="bg-gray-50 rounded-lg p-4">
+                        <p class="text-sm text-gray-500 italic" id="product-info">
+                            Ideal for agencies, resellers, and digital shops
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column - Order Form -->
+            <div class="bg-white rounded-lg shadow-lg border-2 border-blue-100 p-8">
+                <div class="text-center mb-6">
+                    <h2 class="text-2xl font-bold text-gray-900 mb-2">Order Now</h2>
+                    <div class="text-4xl font-bold text-purple-600 mb-2" id="product-price">$0.00</div>
+                    <div class="flex items-center justify-center mb-4">
+                        <div class="flex text-yellow-400 mr-2">
+                            <span id="product-stars">★★★★★</span>
+                        </div>
+                        <span class="text-sm text-gray-600" id="product-reviews">(0 reviews)</span>
+                    </div>
+                </div>
+
+                <!-- Order Form -->
+                <form id="order-form" class="space-y-6">
+                    <div>
+                        <label for="full-name" class="block text-sm font-medium text-gray-700 mb-2">Full Name *</label>
+                        <input type="text" id="full-name" name="full_name" required
+                               class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-300"
+                               placeholder="Enter your full name">
+                    </div>
+
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email Address *</label>
+                        <input type="email" id="email" name="email" required
+                               class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition duration-300"
+                               placeholder="your.email@example.com">
+                    </div>
+
+                    <div>
+                        <label for="contact-method" class="block text-sm font-medium text-gray-700 mb-2">Preferred Contact Method</label>
+                        <select id="contact-method" name="contact_method"
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-300">
+                            <option value="whatsapp" selected>WhatsApp</option>
+                            <option value="telegram">Telegram</option>
+                            <option value="discord">Discord</option>
+                            <option value="email">Email</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="whatsapp-id" class="block text-sm font-medium text-gray-700 mb-2">WhatsApp ID *</label>
+                        <input type="text" id="whatsapp-id" name="whatsapp_id" required
+                               class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition duration-300"
+                               placeholder="+1234567890 or username">
+                    </div>
+
+                    <div>
+                        <label for="company-name" class="block text-sm font-medium text-gray-700 mb-2">Company Name <span class="text-gray-500">(Optional)</span></label>
+                        <input type="text" id="company-name" name="company_name"
+                               class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-300"
+                               placeholder="Your company name">
+                    </div>
+
+                    <button type="submit" class="w-full bg-purple-600 hover:bg-purple-700 text-white font-bold py-4 px-6 rounded-lg transition duration-300 shadow-md hover:shadow-lg">
+                        Place Order
+                    </button>
+                </form>
+
+                <!-- Form Status Messages -->
+                <div id="form-messages" class="mt-6 hidden">
+                    <div id="success-message" class="hidden bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-lg">
+                        <i class="fas fa-check-circle mr-2"></i>
+                        Order submitted successfully! We'll contact you soon.
+                    </div>
+                    <div id="error-message" class="hidden bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-lg">
+                        <i class="fas fa-exclamation-circle mr-2"></i>
+                        <span id="error-text">Error submitting order. Please try again.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Customer Reviews Section -->
+        <section class="mt-16 bg-gray-50 rounded-lg p-8">
+            <h2 class="text-2xl font-bold text-gray-900 mb-8">Customer Reviews</h2>
+
+            <!-- Add Review Form -->
+            <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+                <h3 class="text-lg font-semibold text-gray-900 mb-4">Write a Review</h3>
+                <form id="review-form" class="space-y-4">
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div>
+                            <label for="review-name" class="block text-sm font-medium text-gray-700 mb-2">Full Name *</label>
+                            <input type="text" id="review-name" name="review_name" required
+                                   class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        </div>
+                        <div>
+                            <label for="review-email" class="block text-sm font-medium text-gray-700 mb-2">Email Address *</label>
+                            <input type="email" id="review-email" name="review_email" required
+                                   class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Rating *</label>
+                        <div class="flex space-x-1" id="rating-stars">
+                            <button type="button" class="star text-2xl text-gray-300 hover:text-yellow-400" data-rating="1">★</button>
+                            <button type="button" class="star text-2xl text-gray-300 hover:text-yellow-400" data-rating="2">★</button>
+                            <button type="button" class="star text-2xl text-gray-300 hover:text-yellow-400" data-rating="3">★</button>
+                            <button type="button" class="star text-2xl text-gray-300 hover:text-yellow-400" data-rating="4">★</button>
+                            <button type="button" class="star text-2xl text-gray-300 hover:text-yellow-400" data-rating="5">★</button>
+                        </div>
+                        <input type="hidden" id="review-rating" name="rating" required>
+                    </div>
+
+                    <div>
+                        <label for="review-text" class="block text-sm font-medium text-gray-700 mb-2">Your Review *</label>
+                        <textarea id="review-text" name="review_text" rows="4" required
+                                  class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
+                                  placeholder="Share your experience with this product..."></textarea>
+                    </div>
+
+                    <button type="submit" class="bg-gray-800 hover:bg-gray-900 text-white font-medium py-2 px-6 rounded-lg transition duration-300">
+                        Submit Review
+                    </button>
+                </form>
+            </div>
+
+            <!-- Reviews List -->
+            <div id="reviews-list" class="space-y-6">
+                <!-- Reviews will be inserted by JS -->
+                <div class="text-center py-12">
+                    <i class="fas fa-comments text-6xl text-gray-300 mb-4"></i>
+                    <h3 class="text-xl font-medium text-gray-600 mb-2">No reviews yet</h3>
+                    <p class="text-gray-500">Be the first to review this product!</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white">
+        <div class="container mx-auto px-4 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Company Info -->
+                <div class="space-y-4">
+                    <h3 class="text-xl font-bold text-blue-400">Volmerix Enterprise</h3>
+                    <p class="text-gray-300 text-sm leading-relaxed">
+                        Your trusted subscription supplier for premium digital accounts.
+                        Fast delivery, secure transactions, and 24/7 customer support.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-blue-400 transition-colors">
+                            <i class="fab fa-discord text-lg"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-purple-400 transition-colors">
+                            <i class="fab fa-facebook text-lg"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-blue-400 transition-colors">
+                            <i class="fab fa-telegram text-lg"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="space-y-4">
+                    <h4 class="text-lg font-semibold">Quick Links</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="index.html" class="text-gray-300 hover:text-white transition-colors">Home</a></li>
+                        <li><a href="shop.html" class="text-gray-300 hover:text-white transition-colors">Shop</a></li>
+                        <li><a href="about.html" class="text-gray-300 hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="contact.html" class="text-gray-300 hover:text-white transition-colors">Contact</a></li>
+                        <li><a href="admin.html" class="text-gray-300 hover:text-white transition-colors">Admin</a></li>
+                    </ul>
+                </div>
+
+                <!-- Services -->
+                <div class="space-y-4">
+                    <h4 class="text-lg font-semibold">Our Services</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">YouTube Premium</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Google One Storage</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Netflix Accounts</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Adobe Creative Cloud</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Microsoft 365</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="space-y-4">
+                    <h4 class="text-lg font-semibold">Contact Us</h4>
+                    <div class="space-y-3 text-sm">
+                        <div class="flex items-center space-x-3">
+                            <i class="fas fa-envelope text-blue-400 w-4"></i>
+                            <span class="text-gray-300">contact@volmerix.com</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <i class="fas fa-clock text-purple-400 w-4"></i>
+                            <span class="text-gray-300">24/7 Support Available</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <i class="fas fa-shield-alt text-blue-400 w-4"></i>
+                            <span class="text-gray-300">Secure & Trusted</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Bar -->
+            <div class="border-t border-gray-700 mt-8 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+                    <div class="text-gray-400 text-sm">
+                        &copy; 2024 Volmerix Enterprise. All rights reserved.
+                    </div>
+                    <div class="flex space-x-6 text-sm">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">Privacy Policy</a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">Terms of Service</a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">Refund Policy</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="assets/js/i18n.js"></script>
+    <script src="assets/js/currency.js"></script>
+    <script src="assets/js/navbar.js"></script>
+    <script src="assets/js/products.js"></script>
+    <script src="assets/js/product.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

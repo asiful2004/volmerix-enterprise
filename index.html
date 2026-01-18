@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volmerix Enterprise - Your Trusted Subscription Supplier</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="bg-gray-50">
+    <!-- Navbar -->
+    <nav id="navbar" class="bg-white shadow-lg sticky top-0 z-50">
+        <!-- Navbar content will be inserted by JS -->
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-20">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-5xl font-bold mb-4" data-i18n="hero-title">Volmerix Enterprise</h1>
+            <p class="text-xl mb-8" data-i18n="hero-subtitle">Your Trusted Subscription Supplier</p>
+            <a href="#featured" class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-8 rounded-lg transition duration-300" data-i18n="get-started">Get Started Now</a>
+            <div class="mt-8 flex justify-center space-x-4">
+                <a href="#" class="text-white hover:text-blue-200"><i class="fab fa-discord text-2xl"></i></a>
+                <a href="#" class="text-white hover:text-purple-200"><i class="fab fa-facebook text-2xl"></i></a>
+                <a href="#" class="text-white hover:text-blue-200"><i class="fab fa-telegram text-2xl"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Plans -->
+    <section id="featured" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12" data-i18n="featured-plans">Featured Plans</h2>
+            <div class="relative">
+                <!-- Scroll Indicator -->
+                <div class="absolute right-4 top-1/2 transform -translate-y-1/2 z-10 hidden md:block">
+                    <div class="bg-blue-500 text-white p-2 rounded-full shadow-lg opacity-75 hover:opacity-100 transition-opacity">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </div>
+
+                <!-- Featured Products Container -->
+                <div class="flex overflow-x-auto space-x-6 pb-4 scrollbar-hide" id="featured-slider" style="scroll-behavior: smooth;">
+                    <!-- Featured products will be inserted by JS -->
+                </div>
+
+                <!-- Gradient Fade on Right -->
+                <div class="absolute right-0 top-0 bottom-4 w-20 bg-gradient-to-l from-white to-transparent pointer-events-none hidden md:block"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12" data-i18n="why-choose">Why Choose Volmerix Enterprise</h2>
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="text-center">
+                    <div class="bg-blue-500 text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-clock text-2xl"></i>
+                    </div>
+                    <h3 class="font-bold mb-2" data-i18n="fast-fulfillment">Fast Order Fulfillment</h3>
+                    <p data-i18n="fast-fulfillment-desc">24h delivery</p>
+                </div>
+                <div class="text-center">
+                    <div class="bg-purple-500 text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-star text-2xl"></i>
+                    </div>
+                    <h3 class="font-bold mb-2" data-i18n="premium-accounts">Premium Accounts Only</h3>
+                    <p data-i18n="premium-accounts-desc">High quality guaranteed</p>
+                </div>
+                <div class="text-center">
+                    <div class="bg-blue-500 text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-shield-alt text-2xl"></i>
+                    </div>
+                    <h3 class="font-bold mb-2" data-i18n="safe-setup">Safe Korean Setup</h3>
+                    <p data-i18n="safe-setup-desc">Region optimized</p>
+                </div>
+                <div class="text-center">
+                    <div class="bg-purple-500 text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-headset text-2xl"></i>
+                    </div>
+                    <h3 class="font-bold mb-2" data-i18n="support">24/7 Support</h3>
+                    <p data-i18n="support-desc">Always here to help</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-8" data-i18n="satisfied-customers">Satisfied Customers</h2>
+            <div class="flex overflow-x-auto space-x-6 pb-4" id="testimonials-carousel">
+                <!-- Testimonials will be inserted by JS -->
+            </div>
+            <p class="text-gray-600 mt-4" data-i18n="trusted-by">Trusted by 100+ customers</p>
+        </div>
+    </section>
+
+    <!-- Trusted By -->
+    <section class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-12" data-i18n="trusted-by-title">Trusted By</h2>
+            <div class="flex flex-wrap justify-center items-center gap-8 md:gap-12 lg:gap-16">
+                <!-- Zynra Limited -->
+                <a href="#" target="_blank" rel="noopener noreferrer"
+                   class="partner-logo bg-white p-2 rounded-full shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105 border-2 border-gray-200 block w-24 h-24 md:w-32 md:h-32 flex items-center justify-center">
+                    <img src="assets/images/Zynra-Limited.png" alt="Zynra Limited Logo"
+                         class="w-20 h-20 md:w-28 md:h-28 object-cover rounded-full"
+                         onerror="this.src='assets/images/placeholder.php?w=80&h=80&text=Zynra'">
+                </a>
+
+                <!-- Arodx -->
+                <a href="https://arodx.com" target="_blank" rel="noopener noreferrer"
+                   class="partner-logo bg-white p-2 rounded-full shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105 border-2 border-gray-200 block w-24 h-24 md:w-32 md:h-32 flex items-center justify-center">
+                    <img src="assets/images/arodx.png" alt="Arodx Logo"
+                         class="w-20 h-20 md:w-28 md:h-28 object-cover rounded-full"
+                         onerror="this.src='assets/images/placeholder.php?w=80&h=80&text=Arodx'">
+                </a>
+
+                <!-- Eorvex Ltd -->
+                <a href="#" target="_blank" rel="noopener noreferrer"
+                   class="partner-logo bg-white p-2 rounded-full shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105 border-2 border-gray-200 block w-24 h-24 md:w-32 md:h-32 flex items-center justify-center">
+                    <img src="assets/images/Volmerix-Enterprise.png" alt="Eorvex Ltd Logo"
+                         class="w-20 h-20 md:w-28 md:h-28 object-cover rounded-full"
+                         onerror="this.src='assets/images/placeholder.php?w=80&h=80&text=Eorvex'">
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 bg-gradient-to-r from-blue-600 to-purple-600 text-white text-center">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-4" data-i18n="cta-title">Bring Your YouTube to the Next Level Today</h2>
+            <a href="#featured" class="bg-purple-600 text-white font-bold py-3 px-8 rounded-lg hover:bg-purple-700 transition duration-300" data-i18n="cta-button">Get Started Now</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white">
+        <div class="container mx-auto px-4 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Company Info -->
+                <div class="space-y-4">
+                    <h3 class="text-xl font-bold text-blue-400">Volmerix Enterprise</h3>
+                    <p class="text-gray-300 text-sm leading-relaxed">
+                        Your trusted subscription supplier for premium digital accounts.
+                        Fast delivery, secure transactions, and 24/7 customer support.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-blue-400 transition-colors">
+                            <i class="fab fa-discord text-lg"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-purple-400 transition-colors">
+                            <i class="fab fa-facebook text-lg"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-blue-400 transition-colors">
+                            <i class="fab fa-telegram text-lg"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="space-y-4">
+                    <h4 class="text-lg font-semibold">Quick Links</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="index.html" class="text-gray-300 hover:text-white transition-colors">Home</a></li>
+                        <li><a href="shop.html" class="text-gray-300 hover:text-white transition-colors">Shop</a></li>
+                        <li><a href="about.html" class="text-gray-300 hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="contact.html" class="text-gray-300 hover:text-white transition-colors">Contact</a></li>
+                        <li><a href="admin.html" class="text-gray-300 hover:text-white transition-colors">Admin</a></li>
+                    </ul>
+                </div>
+
+                <!-- Services -->
+                <div class="space-y-4">
+                    <h4 class="text-lg font-semibold">Our Services</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">YouTube Premium</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Google One Storage</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Netflix Accounts</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Adobe Creative Cloud</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Microsoft 365</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="space-y-4">
+                    <h4 class="text-lg font-semibold">Contact Us</h4>
+                    <div class="space-y-3 text-sm">
+                        <div class="flex items-center space-x-3">
+                            <i class="fas fa-envelope text-blue-400 w-4"></i>
+                            <span class="text-gray-300">contact@volmerix.com</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <i class="fas fa-clock text-purple-400 w-4"></i>
+                            <span class="text-gray-300">24/7 Support Available</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <i class="fas fa-shield-alt text-blue-400 w-4"></i>
+                            <span class="text-gray-300">Secure & Trusted</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Bar -->
+            <div class="border-t border-gray-700 mt-8 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+                    <div class="text-gray-400 text-sm">
+                        &copy; 2024 Volmerix Enterprise. All rights reserved.
+                    </div>
+                    <div class="flex space-x-6 text-sm">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">Privacy Policy</a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">Terms of Service</a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">Refund Policy</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="assets/js/i18n.js"></script>
+    <script src="assets/js/currency.js"></script>
+    <script src="assets/js/navbar.js"></script>
+    <script src="assets/js/products.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
