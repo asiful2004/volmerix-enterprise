@@ -2,17 +2,31 @@
 
 class ProductPage {
     constructor() {
+        // Prevent multiple instantiations
+        if (window.productPageInstance) {
+            console.warn('ProductPage already instantiated, skipping duplicate initialization');
+            return window.productPageInstance;
+        }
+
         this.product = null;
         this.reviews = [];
+        this.filteredReviews = [];
+        this.currentRatingFilter = 'all'; // 'all', '5', '4', '3', '2', '1'
+        this.currentSort = 'newest'; // 'newest', 'oldest', 'highest', 'lowest'
+        this.isSubmittingOrder = false;
+        this.isSubmittingReview = false;
         this.init();
+        window.productPageInstance = this;
     }
 
     init() {
         this.loadProductFromURL();
         this.setupOrderForm();
         this.setupReviewForm();
+        this.setupReviewFilters();
         this.loadReviews();
         this.setupContactMethodToggle();
+        this.setupLanguageChangeListener();
     }
 
     loadProductFromURL() {
@@ -41,14 +55,18 @@ class ProductPage {
     }
 
     displayProduct() {
+        // Get translated product name
+        const lang = typeof i18n !== 'undefined' ? i18n.currentLang : 'en';
+        const productName = lang === 'kr' ? this.product.nameKr : this.product.name;
+
         // Update page title
-        document.title = `${this.product.name} - Volmerix Enterprise`;
+        document.title = `${productName} - Volmerix Enterprise`;
 
         // Update breadcrumb
-        document.getElementById('breadcrumb-product').textContent = this.product.name;
+        document.getElementById('breadcrumb-product').textContent = productName;
 
         // Update product title
-        document.getElementById('product-title').textContent = this.product.name;
+        document.getElementById('product-title').textContent = productName;
 
         // Update product image
         const imageElement = document.getElementById('product-image');
@@ -56,7 +74,6 @@ class ProductPage {
         imageElement.alt = this.product.name;
 
         // Update product description
-        const lang = typeof i18n !== 'undefined' ? i18n.currentLang : 'en';
         const description = lang === 'kr' ? this.product.descriptionKr : this.product.description;
         document.getElementById('product-description').textContent = description;
 
@@ -78,20 +95,23 @@ class ProductPage {
     displayFeatures() {
         const featuresList = document.getElementById('product-features');
         const features = [
-            'Monthly subscription access',
-            'Fast delivery within 24 hours',
-            'Premium quality guaranteed',
-            '24/7 customer support',
-            'Secure payment processing',
-            'Region-optimized accounts'
+            'monthly-subscription',
+            'fast-delivery',
+            'premium-quality',
+            'support-24-7',
+            'secure-payments',
+            'optimized-accounts'
         ];
 
-        featuresList.innerHTML = features.map(feature => `
-            <li class="flex items-center">
-                <i class="fas fa-check text-green-500 mr-3"></i>
-                <span class="text-gray-700">${feature}</span>
-            </li>
-        `).join('');
+        featuresList.innerHTML = features.map(featureKey => {
+            const featureText = typeof i18n !== 'undefined' ? i18n.t(featureKey) : featureKey;
+            return `
+                <li class="flex items-center">
+                    <i class="fas fa-check text-green-500 mr-3"></i>
+                    <span class="text-gray-700">${featureText}</span>
+                </li>
+            `;
+        }).join('');
     }
 
     displayRating() {
@@ -102,7 +122,9 @@ class ProductPage {
         const emptyStars = 5 - fullStars;
 
         starsElement.textContent = '★'.repeat(fullStars) + '☆'.repeat(emptyStars);
-        reviewsElement.textContent = `(${this.product.reviews} reviews)`;
+
+        const reviewsText = typeof i18n !== 'undefined' ? i18n.t('reviews') : 'reviews';
+        reviewsElement.textContent = `(${this.product.reviews} ${reviewsText})`;
     }
 
     showProductNotFound() {
@@ -122,7 +144,16 @@ class ProductPage {
     async handleOrderSubmit(e) {
         e.preventDefault();
 
+        // Prevent double submission
+        if (this.isSubmittingOrder) {
+            console.warn('Order form: Double submission prevented');
+            return;
+        }
+
+        console.log('Order form: Starting submission');
+
         if (!this.product) {
+            console.error('Order form: Product not found');
             this.showOrderError('Product not found');
             return;
         }
@@ -141,120 +172,77 @@ class ProductPage {
             timestamp: new Date().toISOString()
         };
 
+        console.log('Order form: Collected data', orderData);
+
         // Validate required fields
         if (!orderData.full_name || !orderData.email || !orderData.whatsapp_id) {
+            console.log('Order form: Validation failed - missing required fields');
             this.showOrderError('Please fill in all required fields');
             return;
         }
 
         if (!validateEmail(orderData.email)) {
+            console.log('Order form: Validation failed - invalid email');
             this.showOrderError('Please enter a valid email address');
             return;
         }
+
+        // Set submission flag
+        this.isSubmittingOrder = true;
+        console.log('Order form: Submission flag set to true');
 
         // Show loading
         this.setOrderFormLoading(true);
 
         try {
-            // Format price for display
-            const displayPrice = currencyManager ?
-                currencyManager.formatPrice(this.product.price) :
-                `₩${this.product.price.toLocaleString()}`;
-
-            // Prepare Discord webhook message
-            const discordMessage = {
-                content: `🛒 **New Detailed Order Received!**`,
-                embeds: [
-                    {
-                        title: 'Order Details',
-                        color: 15158332, // Red color
-                        fields: [
-                            {
-                                name: 'Product',
-                                value: `${this.product.name} (${displayPrice})`,
-                                inline: true
-                            },
-                            {
-                                name: 'Customer',
-                                value: `${orderData.full_name}\n${orderData.email}`,
-                                inline: true
-                            },
-                            {
-                                name: 'Contact Method',
-                                value: `${orderData.contact_method}: ${orderData.whatsapp_id}`,
-                                inline: false
-                            },
-                            {
-                                name: 'Company',
-                                value: orderData.company_name || 'Not provided',
-                                inline: true
-                            },
-                            {
-                                name: 'Order Time',
-                                value: new Date().toLocaleString(),
-                                inline: true
-                            }
-                        ],
-                        footer: {
-                            text: 'Volmerix Enterprise Order System'
-                        }
-                    }
-                ],
-                username: 'Volmerix Order Bot',
-                avatar_url: 'https://i.imgur.com/placeholder.png'
-            };
-
+            console.log('Order form: Sending to api/order.php', orderData);
+            // Send order data to PHP backend (PHP will handle Discord webhook)
             const response = await fetch('api/order.php', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(discordMessage)
+                body: JSON.stringify(orderData)
             });
 
+            console.log('Order form: Response received', response.status);
             const result = await response.json();
+            console.log('Order form: Result', result);
 
             if (response.ok && result.success) {
-                this.showOrderSuccess();
+                console.log('Order form: Success - resetting form');
                 e.target.reset();
+
+                // Show beautiful notification
+                if (window.notifications) {
+                    window.notifications.success(
+                        'We will contact you soon.',
+                        'Order placed successfully!'
+                    );
+                } else {
+                    this.showOrderSuccess(); // Fallback
+                }
             } else {
-                this.showOrderError(result.error || 'Failed to submit order');
+                console.error('Order form: Error response', result);
+
+                // Show beautiful error notification
+                if (window.notifications) {
+                    window.notifications.error(
+                        result.error || 'Failed to submit order',
+                        'Order submission failed'
+                    );
+                } else {
+                    this.showOrderError(result.error || 'Failed to submit order'); // Fallback
+                }
             }
         } catch (error) {
-            console.error('Order submission error:', error);
+            console.error('Order form: Network error:', error);
             this.showOrderError('Network error. Please try again later.');
         } finally {
             this.setOrderFormLoading(false);
+            this.isSubmittingOrder = false;
+            console.log('Order form: Submission flag reset to false');
         }
-    }
-
-    setOrderFormLoading(loading) {
-        const submitBtn = document.querySelector('#order-form button[type="submit"]');
-        if (loading) {
-            submitBtn.disabled = true;
-            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Processing...';
-        } else {
-            submitBtn.disabled = false;
-            submitBtn.innerHTML = 'Place Order';
-        }
-    }
-
-    showOrderSuccess() {
-        const messagesDiv = document.getElementById('form-messages');
-        const successDiv = document.getElementById('success-message');
-        const errorDiv = document.getElementById('error-message');
-
-        messagesDiv.classList.remove('hidden');
-        successDiv.classList.remove('hidden');
-        errorDiv.classList.add('hidden');
-
-        // Scroll to success message
-        successDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
-
-        // Auto-hide after 10 seconds
-        setTimeout(() => {
-            messagesDiv.classList.add('hidden');
-        }, 10000);
     }
 
     showOrderError(message) {
@@ -267,6 +255,21 @@ class ProductPage {
         successDiv.classList.add('hidden');
         errorDiv.classList.remove('hidden');
         errorText.textContent = message;
+    }
+
+    setOrderFormLoading(loading) {
+        const submitBtn = document.querySelector('#order-form button[type="submit"]');
+        if (!submitBtn) return;
+
+        if (loading) {
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Placing Order...';
+            submitBtn.classList.add('opacity-75', 'cursor-not-allowed');
+        } else {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = 'Place Order';
+            submitBtn.classList.remove('opacity-75', 'cursor-not-allowed');
+        }
     }
 
     setupContactMethodToggle() {
@@ -348,14 +351,29 @@ class ProductPage {
         });
     }
 
-    handleReviewSubmit(e) {
+    async handleReviewSubmit(e) {
         e.preventDefault();
 
-        if (!this.product) return;
+        // Prevent double submission
+        if (this.isSubmittingReview) {
+            console.warn('Review form: Double submission prevented');
+            if (window.notifications) {
+                window.notifications.warning('Please wait, review is being submitted...', 'Processing');
+            } else {
+                alert('Please wait, review is being submitted...');
+            }
+            return;
+        }
+
+        console.log('Review form: Starting submission');
+
+        if (!this.product) {
+            console.error('Review form: Product not found');
+            return;
+        }
 
         const formData = new FormData(e.target);
         const reviewData = {
-            id: Date.now().toString() + '_' + Math.random().toString(36).substr(2, 9),
             product_id: this.product.id,
             product_name: this.product.name,
             name: formData.get('review_name').trim(),
@@ -366,19 +384,35 @@ class ProductPage {
             browser_id: this.getBrowserId()
         };
 
+        console.log('Review form: Collected data', reviewData);
+
         // Validate
         if (!reviewData.name || !reviewData.email || !reviewData.rating || !reviewData.review_text) {
-            alert('Please fill in all required fields');
+            console.log('Review form: Validation failed - missing fields');
+            if (window.notifications) {
+                window.notifications.warning('Please fill in all required fields', 'Validation Error');
+            } else {
+                alert('Please fill in all required fields');
+            }
             return;
         }
 
         if (!validateEmail(reviewData.email)) {
-            alert('Please enter a valid email address');
+            console.log('Review form: Validation failed - invalid email');
+            if (window.notifications) {
+                window.notifications.warning('Please enter a valid email address', 'Validation Error');
+            } else {
+                alert('Please enter a valid email address');
+            }
             return;
         }
 
+        // Set submission flag
+        this.isSubmittingReview = true;
+        console.log('Review form: Submission flag set to true');
+
         try {
-            // Save to localStorage
+            // First save to localStorage for immediate display
             const reviewsKey = `reviews_${this.product.id}`;
             const existingReviews = JSON.parse(localStorage.getItem(reviewsKey) || '[]');
 
@@ -388,18 +422,79 @@ class ProductPage {
             );
 
             if (duplicate) {
-                alert('You have already submitted a review for this product.');
+                console.log('Review form: Duplicate review found');
+                if (window.notifications) {
+                    window.notifications.warning(
+                        'You have already submitted a review for this product.',
+                        'Duplicate Review'
+                    );
+                } else {
+                    alert('You have already submitted a review for this product.');
+                }
+                this.isSubmittingReview = false;
                 return;
             }
 
             existingReviews.push(reviewData);
             localStorage.setItem(reviewsKey, JSON.stringify(existingReviews));
 
-            // Send Discord notification directly
-            this.sendDiscordNotification(reviewData);
+            console.log('Review form: Saved to localStorage, now sending to server');
 
-            // Success
-            alert('Review submitted successfully!');
+            // Send to PHP backend for Discord webhook
+            const response = await fetch('api/reviews.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(reviewData)
+            });
+
+            console.log('Review form: Server response', response.status);
+            const result = await response.json();
+            console.log('Review form: Server result', result);
+
+            if (response.ok && result.success) {
+                console.log('Review form: Success - webhook sent');
+
+                // Show beautiful notification
+                if (window.notifications) {
+                    window.notifications.success(
+                        'Thank you for your feedback!',
+                        'Review submitted successfully!'
+                    );
+                } else {
+                    alert('Review submitted successfully!'); // Fallback
+                }
+                e.target.reset();
+
+                // Reset star rating
+                document.querySelectorAll('#rating-stars .star').forEach(star => {
+                    star.className = 'star text-2xl text-gray-300';
+                });
+                document.getElementById('review-rating').value = '';
+
+                // Reload reviews
+                this.loadReviews();
+            } else {
+                console.error('Review form: Server error', result);
+                // Still show success since localStorage worked
+                alert('Review submitted successfully!');
+                e.target.reset();
+
+                // Reset star rating
+                document.querySelectorAll('#rating-stars .star').forEach(star => {
+                    star.className = 'star text-2xl text-gray-300';
+                });
+                document.getElementById('review-rating').value = '';
+
+                // Reload reviews
+                this.loadReviews();
+            }
+
+        } catch (error) {
+            console.error('Review form: Network error:', error);
+            // Still show success since localStorage worked
+            alert('Review submitted successfully! (Offline mode)');
             e.target.reset();
 
             // Reset star rating
@@ -410,10 +505,9 @@ class ProductPage {
 
             // Reload reviews
             this.loadReviews();
-
-        } catch (error) {
-            console.error('Review submission error:', error);
-            alert('Failed to save review. Please try again.');
+        } finally {
+            this.isSubmittingReview = false;
+            console.log('Review form: Submission flag reset to false');
         }
     }
 
@@ -421,14 +515,35 @@ class ProductPage {
         if (!this.product) return;
 
         try {
-            // Load reviews from localStorage
+            // Load reviews from localStorage (user-submitted reviews)
             const reviewsKey = `reviews_${this.product.id}`;
             const storedReviews = localStorage.getItem(reviewsKey);
-            this.reviews = storedReviews ? JSON.parse(storedReviews) : [];
+            const localStorageReviews = storedReviews ? JSON.parse(storedReviews) : [];
 
-            // Sort by newest first
-            this.reviews.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+            // Load reviews from products data (pre-added reviews)
+            const productDataReviews = this.product.reviewsData || [];
 
+            // Merge both sources and remove duplicates (by email if they exist)
+            const allReviews = [...productDataReviews];
+
+            // Add localStorage reviews, but avoid duplicates
+            localStorageReviews.forEach(localReview => {
+                const exists = allReviews.find(review =>
+                    review.email === localReview.email &&
+                    review.timestamp === localReview.timestamp
+                );
+                if (!exists) {
+                    allReviews.push(localReview);
+                }
+            });
+
+            this.reviews = allReviews;
+
+            // Sort by newest first initially
+            this.reviews.sort((a, b) => new Date(b.timestamp || b.date) - new Date(a.timestamp || a.date));
+
+            // Initialize filtered reviews
+            this.filteredReviews = [...this.reviews];
             this.displayReviews();
         } catch (error) {
             console.error('Error loading reviews:', error);
@@ -437,61 +552,7 @@ class ProductPage {
         }
     }
 
-    sendDiscordNotification(reviewData) {
-        // Send Discord notification for new review
-        const discordWebhookUrl = 'https://discord.com/api/webhooks/1462099978171322522/d2eBv4ibb9OszUtSkCRZ4kCm4540f3knvG9yvdHjKeUc4OfzHItSflFHFDpn1lQQKI3d';
 
-        const discordMessage = {
-            content: '⭐ **New Product Review Submitted!**',
-            embeds: [
-                {
-                    title: 'Review Details',
-                    color: 16776960, // Yellow color
-                    fields: [
-                        {
-                            name: 'Product',
-                            value: reviewData.product_name,
-                            inline: true
-                        },
-                        {
-                            name: 'Rating',
-                            value: '★'.repeat(reviewData.rating) + '☆'.repeat(5 - reviewData.rating),
-                            inline: true
-                        },
-                        {
-                            name: 'Customer',
-                            value: `${reviewData.name} (${reviewData.email})`,
-                            inline: false
-                        },
-                        {
-                            name: 'Review',
-                            value: reviewData.review_text.length > 500 ?
-                                reviewData.review_text.substring(0, 500) + '...' :
-                                reviewData.review_text,
-                            inline: false
-                        }
-                    ],
-                    footer: {
-                        text: 'Volmerix Enterprise Review System'
-                    },
-                    timestamp: reviewData.timestamp
-                }
-            ],
-            username: 'Volmerix Review Bot',
-            avatar_url: 'https://i.imgur.com/placeholder.png'
-        };
-
-        // Send to Discord (don't wait for response)
-        fetch(discordWebhookUrl, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(discordMessage)
-        }).catch(error => {
-            console.log('Discord notification failed:', error);
-        });
-    }
 
     getBrowserId() {
         // Generate a unique ID for this browser session
@@ -507,11 +568,13 @@ class ProductPage {
         const reviewsList = document.getElementById('reviews-list');
 
         if (this.reviews.length === 0) {
+            const noReviewsTitle = typeof i18n !== 'undefined' ? i18n.t('no-reviews-yet') : 'No reviews yet';
+            const noReviewsText = typeof i18n !== 'undefined' ? i18n.t('first-review') : 'Be the first to review this product!';
             reviewsList.innerHTML = `
                 <div class="text-center py-12">
                     <i class="fas fa-comments text-6xl text-gray-300 mb-4"></i>
-                    <h3 class="text-xl font-medium text-gray-600 mb-2">No reviews yet</h3>
-                    <p class="text-gray-500">Be the first to review this product!</p>
+                    <h3 class="text-xl font-medium text-gray-600 mb-2">${noReviewsTitle}</h3>
+                    <p class="text-gray-500">${noReviewsText}</p>
                 </div>
             `;
             return;
@@ -521,7 +584,9 @@ class ProductPage {
     }
 
     renderReview(review) {
-        const date = new Date(review.timestamp);
+        // Handle both timestamp and date fields
+        const dateValue = review.timestamp || review.date;
+        const date = new Date(dateValue);
         const formattedDate = date.toLocaleDateString();
 
         return `
@@ -537,7 +602,7 @@ class ProductPage {
                         </div>
                     </div>
                 </div>
-                <p class="text-gray-700 leading-relaxed">${this.escapeHtml(review.review_text)}</p>
+                <p class="text-gray-700 leading-relaxed">${this.escapeHtml(review.reviewText || review.review_text)}</p>
             </div>
         `;
     }
@@ -547,6 +612,145 @@ class ProductPage {
         div.textContent = text;
         return div.innerHTML;
     }
+
+    setupReviewFilters() {
+        // Setup rating filter buttons
+        const filterButtons = document.querySelectorAll('.review-filter');
+        filterButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                const rating = e.target.getAttribute('data-rating');
+                this.setRatingFilter(rating);
+
+                // Update button styles
+                filterButtons.forEach(btn => {
+                    if (btn.getAttribute('data-rating') === rating) {
+                        btn.classList.remove('border-gray-300', 'text-gray-700', 'hover:bg-gray-50');
+                        btn.classList.add('bg-purple-500', 'text-white', 'border-purple-500');
+                    } else {
+                        btn.classList.remove('bg-purple-500', 'text-white', 'border-purple-500');
+                        btn.classList.add('border-gray-300', 'text-gray-700', 'hover:bg-gray-50');
+                    }
+                });
+            });
+        });
+
+        // Setup sort dropdown
+        const sortSelect = document.getElementById('review-sort');
+        if (sortSelect) {
+            sortSelect.addEventListener('change', (e) => {
+                this.setSortOption(e.target.value);
+            });
+        }
+    }
+
+    setRatingFilter(rating) {
+        this.currentRatingFilter = rating;
+        this.applyFiltersAndSort();
+        this.updateFilterInfo();
+    }
+
+    setSortOption(sort) {
+        this.currentSort = sort;
+        this.applyFiltersAndSort();
+        this.updateFilterInfo();
+    }
+
+    applyFiltersAndSort() {
+        let filtered = [...this.reviews];
+
+        // Apply rating filter
+        if (this.currentRatingFilter !== 'all') {
+            filtered = filtered.filter(review => review.rating === parseInt(this.currentRatingFilter));
+        }
+
+        // Apply sorting
+        switch (this.currentSort) {
+            case 'newest':
+                filtered.sort((a, b) => new Date(b.timestamp || b.date) - new Date(a.timestamp || a.date));
+                break;
+            case 'oldest':
+                filtered.sort((a, b) => new Date(a.timestamp || a.date) - new Date(b.timestamp || b.date));
+                break;
+            case 'highest':
+                filtered.sort((a, b) => b.rating - a.rating);
+                break;
+            case 'lowest':
+                filtered.sort((a, b) => a.rating - b.rating);
+                break;
+        }
+
+        this.filteredReviews = filtered;
+        this.displayFilteredReviews();
+    }
+
+    updateFilterInfo() {
+        const filterInfo = document.getElementById('filter-info');
+        if (!filterInfo) return;
+
+        const totalFiltered = this.filteredReviews.length;
+        const ratingText = this.currentRatingFilter === 'all' ? 'all' : `${this.currentRatingFilter}-star`;
+        const sortText = this.currentSort.replace('newest', 'newest first').replace('oldest', 'oldest first')
+            .replace('highest', 'highest rated').replace('lowest', 'lowest rated');
+
+        filterInfo.textContent = `Showing ${totalFiltered} ${ratingText} reviews (sorted by ${sortText})`;
+    }
+
+    displayFilteredReviews() {
+        const reviewsList = document.getElementById('reviews-list');
+
+        if (this.filteredReviews.length === 0) {
+            const noReviewsTitle = typeof i18n !== 'undefined' ? i18n.t('no-reviews-yet') : 'No reviews yet';
+            const noReviewsText = typeof i18n !== 'undefined' ? i18n.t('first-review') : 'Be the first to review this product!';
+            reviewsList.innerHTML = `
+                <div class="text-center py-12">
+                    <i class="fas fa-comments text-6xl text-gray-300 mb-4"></i>
+                    <h3 class="text-xl font-medium text-gray-600 mb-2">${noReviewsTitle}</h3>
+                    <p class="text-gray-500">No reviews match your current filters.</p>
+                </div>
+            `;
+            return;
+        }
+
+        reviewsList.innerHTML = this.filteredReviews.map(review => this.renderReview(review)).join('');
+    }
+
+    setupLanguageChangeListener() {
+        // Listen for language changes and update dynamic content
+        if (typeof i18n !== 'undefined') {
+            // Override the i18n updateContent method to also update product-specific content
+            const originalUpdateContent = i18n.updateContent.bind(i18n);
+            i18n.updateContent = () => {
+                originalUpdateContent();
+                this.updateDynamicContent();
+            };
+        }
+    }
+
+    updateDynamicContent() {
+        if (this.product) {
+            // Update features list
+            this.displayFeatures();
+
+            // Update description
+            const lang = typeof i18n !== 'undefined' ? i18n.currentLang : 'en';
+            const description = lang === 'kr' ? this.product.descriptionKr : this.product.description;
+            document.getElementById('product-description').textContent = description;
+
+            // Update button text
+            const orderBtn = document.querySelector('#order-form button[type="submit"]');
+            if (orderBtn && typeof i18n !== 'undefined') {
+                orderBtn.textContent = i18n.t('place-order');
+            }
+
+            const reviewBtn = document.querySelector('#review-form button[type="submit"]');
+            if (reviewBtn && typeof i18n !== 'undefined') {
+                reviewBtn.textContent = i18n.t('submit-review');
+            }
+        }
+
+        // Update review display
+        this.displayReviews();
+    }
 }
 
 // Make ProductPage class globally available
@@ -554,7 +758,7 @@ window.ProductPage = ProductPage;
 
 // Initialize product page when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
-    if (document.getElementById('product-details')) {
+    if (document.getElementById('product-details') && !window.productPageInstance) {
         window.productPage = new ProductPage();
     }
 });

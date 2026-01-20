@@ -6,9 +6,9 @@ const products = [
         name: 'YouTube Premium Individual – Yearly Plan',
         nameKr: 'YouTube 프리미엄 개인용 - 연간 플랜',
         slug: 'youtube-premium-individual-yearly',
-        price: 45000, // KRW
+        price: 32448.08, // KRW
         image: 'assets/images/product/youtube-in.png',
-        description: '🎯 PROFESSIONAL RESELLER SOLUTION\n\nVolmerix delivers professionally managed YouTube Premium Individual Yearly Plans designed specifically for resellers prioritizing stability, control, and long-term reliability.\n\n✨ KEY FEATURES:\n• India Region Accounts with controlled setup\n• Advanced Geo/IP Management for ban prevention\n• Full-Time Warranty during active period\n• Flexible & Secure Delivery Options\n• Renewal and Ongoing Maintenance Support\n• Wholesale Pricing optimized for strong profit margins\n\n🎪 PERFECT FOR:\nShop owners and digital service providers seeking safe, long-term subscription solutions.\n\n🏆 STABLE • MANAGED • RESELLER-READY',
+        description: 'YouTube Premium Individual Yearly Plan provides premium access to YouTube\'s ad-free experience, offline downloads, and background playback features. This comprehensive subscription includes all premium benefits for individual use with reliable account management and region-specific optimization.\n\nKey features include advanced geo-IP protection, continuous account monitoring, secure delivery methods, and ongoing technical support. Designed for long-term reliability and optimal user experience across all devices and platforms.',
         descriptionKr: '🎯 전문 리셀러 솔루션\n\n볼메릭스는 안정성, 통제 및 장기 신뢰성을 우선시하는 리셀러를 위해 특별히 설계된 전문적으로 관리되는 YouTube 프리미엄 개인용 연간 플랜을 제공합니다.\n\n✨ 주요 기능:\n• 통제된 설정으로 인도 지역 계정\n• 금지 방지를 위한 고급 Geo/IP 관리\n• 활성 기간 동안 풀타임 보증\n• 유연하고 안전한 배송 옵션\n• 갱신 및 지속적인 유지 관리 지원\n• 강력한 이익 마진을 위해 최적화된 도매 가격\n\n🎪 완벽함:\n안전하고 장기적인 구독 솔루션을 찾는 상점 소유자와 디지털 서비스 제공업체.\n\n🏆 안정적 • 관리됨 • 리셀러 준비됨',
         featured: true,
         hot: true,
@@ -18,16 +18,42 @@ const products = [
         limited: false,
         rating: 4.9,
         reviews: 4,
-        category: 'subscription'
+        category: 'subscription',
+        reviewsData: [
+            {
+                name: "John Smith",
+                rating: 5,
+                reviewText: "Excellent service! Fast delivery and premium quality account. Highly recommended for content creators.",
+                date: "2024-01-15"
+            },
+            {
+                name: "Sarah Johnson",
+                rating: 5,
+                reviewText: "Perfect YouTube Premium account. No issues with activation and great customer support. Will buy again!",
+                date: "2024-01-18"
+            },
+            {
+                name: "Mike Davis",
+                rating: 5,
+                reviewText: "Outstanding quality and reliability. The account works perfectly with all YouTube Premium features.",
+                date: "2024-01-20"
+            },
+            {
+                name: "Emma Wilson",
+                rating: 4,
+                reviewText: "Very good service overall. Quick delivery and responsive support team. Minor delay but still satisfied.",
+                date: "2024-01-22"
+            }
+        ]
     },
     {
         id: 2,
         name: 'YouTube Premium Family Plan',
         nameKr: 'YouTube 프리미엄 패밀리 플랜',
         slug: 'youtube-premium-family-monthly',
-        price: 25000, // KRW per month
+        price: 10914.45, // KRW
         image: 'assets/images/product/youtube.png',
-        description: '👨‍👩‍👧‍👦 PREMIUM FAMILY EXPERIENCE\n\nVolmerix provides carefully managed YouTube Premium Family Plans built for long-term use and maximum reseller reliability.\n\n🔧 WHAT YOU GET:\n• Professionally managed Geo/IP handling for stability\n• Continuous service warranty during active period\n• Controlled member allocation to prevent flags/bans\n• Assisted renewals and maintenance support\n• Fair wholesale rates for sustainable resale\n\n💼 DESIGNED FOR:\nShop owners valuing consistency, responsibility, and long-term trust.\n\n🌟 RELIABLE • PROFESSIONAL • TRUSTED',
+        description: 'YouTube Premium Family Plan offers premium YouTube access for up to 6 family members, including ad-free viewing, offline downloads, and background playback. This family subscription provides comprehensive account management with controlled member allocation and region-optimized access.\n\nKey features include geo-IP stability controls, continuous service monitoring, secure multi-user setup, and dedicated support services. Designed for families and small groups requiring reliable premium access across multiple devices.',
         descriptionKr: '👨‍👩‍👧‍👦 프리미엄 패밀리 경험\n\n볼메릭스는 장기 사용 및 최대 리셀러 신뢰성을 위해 신중하게 관리되는 YouTube 프리미엄 패밀리 플랜을 제공합니다.\n\n🔧 제공되는 것:\n• 안정성을 위한 전문적으로 관리되는 Geo/IP 처리\n• 활성 기간 동안 지속적인 서비스 보증\n• 플래그/금지를 방지하기 위한 통제된 멤버 할당\n• 지원 갱신 및 유지 관리 지원\n• 지속 가능한 재판매를 위한 공정한 도매 가격\n\n💼 설계 대상:\n일관성, 책임성 및 장기 신뢰를 중시하는 상점 소유자.\n\n🌟 신뢰할 수 있음 • 전문적 • 신뢰받음',
         featured: true,
         hot: false,
@@ -35,116 +61,78 @@ const products = [
         new: true,
         bestseller: true,
         limited: false,
-        rating: 4.8,
-        reviews: 12,
-        category: 'subscription'
+        rating: 5,
+        reviews: 3,
+        category: 'subscription',
+        reviewsData: [
+            {
+                name: "David Brown",
+                rating: 5,
+                reviewText: "Perfect family plan! Works great for all 6 family members. Excellent value for money.",
+                date: "2024-01-10"
+            },
+            {
+                name: "Lisa Anderson",
+                rating: 5,
+                reviewText: "Outstanding family subscription. Easy to manage multiple accounts and great support.",
+                date: "2024-01-12"
+            },
+            {
+                name: "Robert Taylor",
+                rating: 5,
+                reviewText: "Best family plan I've used. Reliable service and no issues with member management.",
+                date: "2024-01-14"
+            }
+        ]
     }
 ];
 
 const testimonials = [
     {
         image: 'assets/images/review-1.jpg',
-        alt: 'Customer Review 1'
+        alt: '320px × 320px'
     },
     {
-        image: 'assets/images/review-2.jpg',
-        alt: 'Customer Review 2'
+        image: 'assets/images/review-1.jpg',
+        alt: '320px × 320px'
     },
     {
-<<<<<<< HEAD
-        id: 3,
-        text: 'Premium quality accounts. No issues so far.',
-        textKr: '프리미엄 품질 계정. 지금까지 문제 없음.',
-        author: 'Lee M.',
-        platform: 'Facebook'
+        image: 'assets/images/review-1.jpg',
+        alt: '320px × 320px'
     },
     {
-        id: 4,
-        text: 'Outstanding customer support! They helped me instantly.',
-        textKr: '탁월한 고객 지원! 즉시 도움을 받았습니다.',
-        author: 'Choi H.',
-        platform: 'WhatsApp'
+        image: 'assets/images/review-1.jpg',
+        alt: '320px × 320px'
     },
     {
-        id: 5,
-        text: 'Best prices for premium accounts. Worth every penny!',
-        textKr: '프리미엄 계정에 최고의 가격. 모든 페니 가치가 있습니다!',
-        author: 'Jung W.',
-        platform: 'Discord'
+        image: 'assets/images/review-1.jpg',
+        alt: '320px × 320px'
     },
     {
-        id: 6,
-        text: 'Super fast activation. Working perfectly in Korea.',
-        textKr: '초고속 활성화. 한국에서 완벽하게 작동합니다.',
-        author: 'Kang M.',
-        platform: 'Telegram'
+        image: 'assets/images/review-1.jpg',
+        alt: '320px × 320px'
     },
     {
-        id: 7,
-        text: 'Trusted seller for over a year. Never disappointed.',
-        textKr: '1년 넘게 신뢰할 수 있는 판매자. 절대 실망시키지 않습니다.',
-        author: 'Shin Y.',
-        platform: 'Facebook'
+        image: 'assets/images/review-1.jpg',
+        alt: '320px × 320px'
     },
     {
-        id: 8,
-        text: 'Excellent quality and instant delivery. 5 stars!',
-        textKr: '우수한 품질과 즉시 배송. 5성!',
-        author: 'Yoo S.',
-        platform: 'Discord'
+        image: 'assets/images/review-1.jpg',
+        alt: '320px × 320px'
     },
     {
-        id: 9,
-        text: 'Great for resellers. Bulk orders processed quickly.',
-        textKr: '리셀러에게 훌륭합니다. 대량 주문이 빠르게 처리됩니다.',
-        author: 'Lim K.',
-        platform: 'WhatsApp'
+        image: 'assets/images/review-1.jpg',
+        alt: '320px × 320px'
     },
     {
-        id: 10,
-        text: 'Professional service with Korean region optimization.',
-        textKr: '한국 지역 최적화로 전문적인 서비스.',
-        author: 'Han J.',
-        platform: 'Telegram'
+        image: 'assets/images/review-1.jpg',
+        alt: '320px × 320px'
     },
     {
-        id: 11,
-        text: 'Been a loyal customer for months. Always satisfied!',
-        textKr: '몇 달 동안 충성스러운 고객입니다. 항상 만족!',
-        author: 'Oh D.',
-        platform: 'Facebook'
-    },
-    {
-        id: 12,
-        text: 'Quick response to all my questions. Very helpful.',
-        textKr: '모든 질문에 빠른 응답. 매우 도움이 됩니다.',
-        author: 'Seo A.',
-        platform: 'Discord'
-=======
-        image: 'assets/images/review-3.jpg',
-        alt: 'Customer Review 3'
-    },
-    {
-        image: 'assets/images/review-4.jpg',
-        alt: 'Customer Review 4'
-    },
-    {
-        image: 'assets/images/review-5.jpg',
-        alt: 'Customer Review 5'
-    },
-    {
-        image: 'assets/images/review-6.jpg',
-        alt: 'Customer Review 6'
-    },
-    {
-        image: 'assets/images/review-7.jpg',
-        alt: 'Customer Review 7'
-    },
-    {
-        image: 'assets/images/review-8.jpg',
-        alt: 'Customer Review 8'
->>>>>>> a95f29b (Complete website enhancement: South Korean translations, dot sliders, and image testimonials)
+        image: 'assets/images/review-1.jpg',
+        alt: '320px × 320px'
     }
+    
 ];
 
 // Product management functions
@@ -250,7 +238,13 @@ function renderTestimonial(testimonial) {
     return `
         <div class="bg-white shadow-md rounded-lg overflow-hidden min-w-80 border border-gray-100">
             <img src="${testimonial.image}" alt="${testimonial.alt}"
-                 class="w-full h-80 object-cover">
+                 class="w-full h-80 object-cover testimonial-image"
+                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="testimonial-text p-6 items-center justify-center hidden" style="display: none; height: 320px;">
+                <p class="text-3xl font-bold text-gray-800 text-center leading-relaxed">
+                    ${testimonial.alt}
+                </p>
+            </div>
         </div>
     `;
 }
@@ -267,39 +261,7 @@ function viewProduct(productId) {
     }
 }
 
-function buyNow(productId) {
-    console.log('buyNow called with productId:', productId, '- THIS SHOULD NOT HAPPEN ON SHOP PAGE');
-    const product = getProductById(productId);
-    if (!product) return;
 
-    const lang = typeof i18n !== 'undefined' ? i18n.currentLang : 'en';
-    const name = lang === 'kr' ? product.nameKr : product.name;
-    const currentCurrency = currencyManager ? currencyManager.getCurrentCurrency() : 'KRW';
-    const price = currencyManager ? currencyManager.formatPrice(product.price) : `₩${product.price.toLocaleString()}`;
-
-    // Send Discord webhook
-    const webhookData = {
-        content: `🛒 **New Order Received!**\n\n**Product:** ${name}\n**Price:** ${price}\n**Currency:** ${currentCurrency}\n**Customer:** Anonymous\n**Time:** ${new Date().toLocaleString()}`,
-        username: 'Volmerix Order Bot',
-        avatar_url: 'https://i.imgur.com/placeholder.png'
-    };
-
-    fetch('api/order.php', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(webhookData)
-    })
-    .then(response => response.json())
-    .then(data => {
-        alert('Order submitted! Check Discord for confirmation.');
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        alert('Order submitted! We will contact you soon.');
-    });
-}
 
 // Testimonials slider functionality
 class TestimonialsSlider {
@@ -389,10 +351,6 @@ class TestimonialsSlider {
     }
 }
 
-<<<<<<< HEAD
-// Global testimonials slider instance
-let testimonialsSlider = null;
-=======
 // Featured Plans slider functionality
 class FeaturedSlider {
     constructor() {
@@ -492,7 +450,6 @@ class FeaturedSlider {
 // Global slider instances
 let testimonialsSlider = null;
 let featuredSlider = null;
->>>>>>> a95f29b (Complete website enhancement: South Korean translations, dot sliders, and image testimonials)
 
 // Initialize featured products and testimonials on home page
 function initHomePage() {
@@ -503,11 +460,13 @@ function initHomePage() {
         const featuredProducts = getFeaturedProducts();
         featuredSliderElement.innerHTML = featuredProducts.map(product => renderProductCard(product, true, 'home')).join('');
 
-        // Initialize featured slider
-        if (featuredSlider) {
-            featuredSlider.destroy();
+        // Initialize featured slider only on medium screens and up (where horizontal scrolling is used)
+        if (window.innerWidth >= 768) {
+            if (featuredSlider) {
+                featuredSlider.destroy();
+            }
+            featuredSlider = new FeaturedSlider();
         }
-        featuredSlider = new FeaturedSlider();
     }
 
     if (testimonialsCarousel) {

@@ -19,18 +19,18 @@
         <nav class="flex mb-8" aria-label="Breadcrumb">
             <ol class="inline-flex items-center space-x-1 md:space-x-3">
                 <li class="inline-flex items-center">
-                    <a href="index.html" class="text-gray-700 hover:text-blue-600 transition duration-300">Home</a>
+                    <a href="index.html" class="text-gray-700 hover:text-blue-600 transition duration-300" data-i18n="breadcrumb-home">Home</a>
                 </li>
                 <li>
                     <div class="flex items-center">
                         <i class="fas fa-chevron-right text-gray-400 mx-2"></i>
-                        <a href="shop.html" class="text-gray-700 hover:text-blue-600 transition duration-300">Shop</a>
+                        <a href="shop.html" class="text-gray-700 hover:text-blue-600 transition duration-300" data-i18n="breadcrumb-shop">Shop</a>
                     </div>
                 </li>
                 <li aria-current="page">
                     <div class="flex items-center">
                         <i class="fas fa-chevron-right text-gray-400 mx-2"></i>
-                        <span class="text-gray-500" id="breadcrumb-product">Product</span>
+                        <span class="text-gray-500" id="breadcrumb-product" data-i18n="breadcrumb-product">Product</span>
                     </div>
                 </li>
             </ol>
@@ -52,7 +52,7 @@
 
                     <!-- Short Description -->
                     <div class="mb-8">
-                        <h2 class="text-xl font-semibold text-gray-900 mb-4">Product Details</h2>
+                        <h2 class="text-xl font-semibold text-gray-900 mb-4" data-i18n="product-details">Product Details</h2>
                         <p class="text-gray-600 leading-relaxed" id="product-description">
                             Loading product information...
                         </p>
@@ -60,7 +60,7 @@
 
                     <!-- Features List -->
                     <div class="mb-8">
-                        <h3 class="text-lg font-semibold text-gray-900 mb-4">Features & Benefits</h3>
+                        <h3 class="text-lg font-semibold text-gray-900 mb-4" data-i18n="features-benefits">Features & Benefits</h3>
                         <ul class="space-y-3" id="product-features">
                             <!-- Features will be inserted by JS -->
                         </ul>
@@ -68,7 +68,7 @@
 
                     <!-- Optional Info -->
                     <div class="bg-gray-50 rounded-lg p-4">
-                        <p class="text-sm text-gray-500 italic" id="product-info">
+                        <p class="text-sm text-gray-500 italic" id="product-info" data-i18n="product-info">
                             Ideal for agencies, resellers, and digital shops
                         </p>
                     </div>
@@ -78,7 +78,7 @@
             <!-- Right Column - Order Form -->
             <div class="bg-white rounded-lg shadow-lg border-2 border-blue-100 p-8">
                 <div class="text-center mb-6">
-                    <h2 class="text-2xl font-bold text-gray-900 mb-2">Order Now</h2>
+                    <h2 class="text-2xl font-bold text-gray-900 mb-2" data-i18n="order-now">Order Now</h2>
                     <div class="text-4xl font-bold text-purple-600 mb-2" id="product-price">$0.00</div>
                     <div class="flex items-center justify-center mb-4">
                         <div class="flex text-yellow-400 mr-2">
@@ -91,45 +91,45 @@
                 <!-- Order Form -->
                 <form id="order-form" class="space-y-6">
                     <div>
-                        <label for="full-name" class="block text-sm font-medium text-gray-700 mb-2">Full Name *</label>
+                        <label for="full-name" class="block text-sm font-medium text-gray-700 mb-2" data-i18n="full-name">Full Name *</label>
                         <input type="text" id="full-name" name="full_name" required
                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-300"
-                               placeholder="Enter your full name">
+                               data-i18n-placeholder="enter-full-name" placeholder="Enter your full name">
                     </div>
 
                     <div>
-                        <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email Address *</label>
+                        <label for="email" class="block text-sm font-medium text-gray-700 mb-2" data-i18n="email-address">Email Address *</label>
                         <input type="email" id="email" name="email" required
                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition duration-300"
                                placeholder="your.email@example.com">
                     </div>
 
                     <div>
-                        <label for="contact-method" class="block text-sm font-medium text-gray-700 mb-2">Preferred Contact Method</label>
+                        <label for="contact-method" class="block text-sm font-medium text-gray-700 mb-2" data-i18n="preferred-contact-method">Preferred Contact Method</label>
                         <select id="contact-method" name="contact_method"
                                 class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-300">
-                            <option value="whatsapp" selected>WhatsApp</option>
-                            <option value="telegram">Telegram</option>
-                            <option value="discord">Discord</option>
-                            <option value="kakaotalk">KakaoTalk</option>
+                            <option value="whatsapp" selected data-i18n="whatsapp">WhatsApp</option>
+                            <option value="telegram" data-i18n="telegram">Telegram</option>
+                            <option value="discord" data-i18n="discord">Discord</option>
+                            <option value="kakaotalk" data-i18n="kakaotalk">KakaoTalk</option>
                         </select>
                     </div>
 
                     <div>
-                        <label for="whatsapp-id" class="block text-sm font-medium text-gray-700 mb-2">WhatsApp ID *</label>
+                        <label for="whatsapp-id" class="block text-sm font-medium text-gray-700 mb-2" data-i18n="whatsapp-id">WhatsApp ID *</label>
                         <input type="text" id="whatsapp-id" name="whatsapp_id" required
                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition duration-300"
-                               placeholder="+1234567890 or username">
+                               data-i18n-placeholder="username" placeholder="+1234567890 or username">
                     </div>
 
                     <div>
-                        <label for="company-name" class="block text-sm font-medium text-gray-700 mb-2">Company Name <span class="text-gray-500">(Optional)</span></label>
+                        <label for="company-name" class="block text-sm font-medium text-gray-700 mb-2"><span data-i18n="company-name">Company Name</span> <span class="text-gray-500" data-i18n="optional">(Optional)</span></label>
                         <input type="text" id="company-name" name="company_name"
                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-300"
-                               placeholder="Your company name">
+                               data-i18n-placeholder="your-company-name" placeholder="Your company name">
                     </div>
 
-                    <button type="submit" class="w-full bg-purple-600 hover:bg-purple-700 text-white font-bold py-4 px-6 rounded-lg transition duration-300 shadow-md hover:shadow-lg">
+                    <button type="submit" class="w-full bg-purple-600 hover:bg-purple-700 text-white font-bold py-4 px-6 rounded-lg transition duration-300 shadow-md hover:shadow-lg" data-i18n="place-order">
                         Place Order
                     </button>
                 </form>
@@ -150,27 +150,73 @@
 
         <!-- Customer Reviews Section -->
         <section class="mt-16 bg-gray-50 rounded-lg p-8">
-            <h2 class="text-2xl font-bold text-gray-900 mb-8">Customer Reviews</h2>
+            <h2 class="text-2xl font-bold text-gray-900 mb-8" data-i18n="customer-reviews">Customer Reviews</h2>
+
+            <!-- Reviews Filter & Sort -->
+            <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+                <div class="flex flex-col md:flex-row gap-4 items-start md:items-center justify-between">
+                    <!-- Filter by Rating -->
+                    <div class="flex flex-col sm:flex-row gap-2">
+                        <span class="text-sm font-medium text-gray-700 mr-2 self-center">Filter by Rating:</span>
+                        <div class="flex flex-wrap gap-1">
+                            <button class="review-filter px-3 py-1 text-xs rounded-full border transition-colors" data-rating="all">
+                                All Reviews
+                            </button>
+                            <button class="review-filter px-3 py-1 text-xs rounded-full border border-yellow-300 text-yellow-700 hover:bg-yellow-50" data-rating="5">
+                                5★
+                            </button>
+                            <button class="review-filter px-3 py-1 text-xs rounded-full border border-yellow-300 text-yellow-700 hover:bg-yellow-50" data-rating="4">
+                                4★
+                            </button>
+                            <button class="review-filter px-3 py-1 text-xs rounded-full border border-yellow-300 text-yellow-700 hover:bg-yellow-50" data-rating="3">
+                                3★
+                            </button>
+                            <button class="review-filter px-3 py-1 text-xs rounded-full border border-yellow-300 text-yellow-700 hover:bg-yellow-50" data-rating="2">
+                                2★
+                            </button>
+                            <button class="review-filter px-3 py-1 text-xs rounded-full border border-yellow-300 text-yellow-700 hover:bg-yellow-50" data-rating="1">
+                                1★
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Sort Options -->
+                    <div class="flex items-center gap-2">
+                        <span class="text-sm font-medium text-gray-700">Sort by:</span>
+                        <select id="review-sort" class="px-3 py-1 text-sm border border-gray-300 rounded-md focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                            <option value="newest">Newest First</option>
+                            <option value="oldest">Oldest First</option>
+                            <option value="highest">Highest Rated</option>
+                            <option value="lowest">Lowest Rated</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Active Filter Info -->
+                <div class="mt-4 text-sm text-gray-600" id="filter-info">
+                    Showing all reviews (sorted by newest first)
+                </div>
+            </div>
 
             <!-- Add Review Form -->
             <div class="bg-white rounded-lg shadow-md p-6 mb-8">
-                <h3 class="text-lg font-semibold text-gray-900 mb-4">Write a Review</h3>
+                <h3 class="text-lg font-semibold text-gray-900 mb-4" data-i18n="write-a-review">Write a Review</h3>
                 <form id="review-form" class="space-y-4">
                     <div class="grid md:grid-cols-2 gap-4">
                         <div>
-                            <label for="review-name" class="block text-sm font-medium text-gray-700 mb-2">Full Name *</label>
+                            <label for="review-name" class="block text-sm font-medium text-gray-700 mb-2" data-i18n="full-name">Full Name *</label>
                             <input type="text" id="review-name" name="review_name" required
                                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                         </div>
                         <div>
-                            <label for="review-email" class="block text-sm font-medium text-gray-700 mb-2">Email Address *</label>
+                            <label for="review-email" class="block text-sm font-medium text-gray-700 mb-2" data-i18n="email-address">Email Address *</label>
                             <input type="email" id="review-email" name="review_email" required
                                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
                         </div>
                     </div>
 
                     <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Rating *</label>
+                        <label class="block text-sm font-medium text-gray-700 mb-2" data-i18n="rating">Rating *</label>
                         <div class="flex space-x-1" id="rating-stars">
                             <button type="button" class="star text-2xl text-gray-300 hover:text-yellow-400" data-rating="1">★</button>
                             <button type="button" class="star text-2xl text-gray-300 hover:text-yellow-400" data-rating="2">★</button>
@@ -182,13 +228,13 @@
                     </div>
 
                     <div>
-                        <label for="review-text" class="block text-sm font-medium text-gray-700 mb-2">Your Review *</label>
+                        <label for="review-text" class="block text-sm font-medium text-gray-700 mb-2" data-i18n="your-review">Your Review *</label>
                         <textarea id="review-text" name="review_text" rows="4" required
                                   class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
-                                  placeholder="Share your experience with this product..."></textarea>
+                                  data-i18n-placeholder="share-experience" placeholder="Share your experience with this product..."></textarea>
                     </div>
 
-                    <button type="submit" class="bg-gray-800 hover:bg-gray-900 text-white font-medium py-2 px-6 rounded-lg transition duration-300">
+                    <button type="submit" class="bg-gray-800 hover:bg-gray-900 text-white font-medium py-2 px-6 rounded-lg transition duration-300" data-i18n="submit-review">
                         Submit Review
                     </button>
                 </form>
@@ -199,8 +245,8 @@
                 <!-- Reviews will be inserted by JS -->
                 <div class="text-center py-12">
                     <i class="fas fa-comments text-6xl text-gray-300 mb-4"></i>
-                    <h3 class="text-xl font-medium text-gray-600 mb-2">No reviews yet</h3>
-                    <p class="text-gray-500">Be the first to review this product!</p>
+                    <h3 class="text-xl font-medium text-gray-600 mb-2" data-i18n="no-reviews-yet">No reviews yet</h3>
+                    <p class="text-gray-500" data-i18n="first-review">Be the first to review this product!</p>
                 </div>
             </div>
         </section>
@@ -213,18 +259,18 @@
                 <!-- Company Info -->
                 <div class="space-y-4">
                     <h3 class="text-xl font-bold text-blue-400">Volmerix Enterprise</h3>
-                    <p class="text-gray-300 text-sm leading-relaxed">
+                    <p class="text-gray-300 text-sm leading-relaxed" data-i18n="footer-company-desc">
                         Your trusted subscription supplier for premium digital accounts.
                         Fast delivery, secure transactions, and 24/7 customer support.
                     </p>
                     <div class="flex space-x-4">
-                        <a href="#" class="text-gray-400 hover:text-blue-400 transition-colors">
+                        <a href="https://discord.gg/Sn6FMX8avD" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-blue-400 transition-colors">
                             <i class="fab fa-discord text-lg"></i>
                         </a>
-                        <a href="#" class="text-gray-400 hover:text-purple-400 transition-colors">
+                        <a href="https://www.facebook.com/profile.php?id=61586824583187" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-purple-400 transition-colors">
                             <i class="fab fa-facebook text-lg"></i>
                         </a>
-                        <a href="#" class="text-gray-400 hover:text-blue-400 transition-colors">
+                        <a href="https://t.me/volmerixenterprise" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-blue-400 transition-colors">
                             <i class="fab fa-telegram text-lg"></i>
                         </a>
                     </div>
@@ -238,7 +284,6 @@
                         <li><a href="shop.html" class="text-gray-300 hover:text-white transition-colors">Shop</a></li>
                         <li><a href="about.html" class="text-gray-300 hover:text-white transition-colors">About Us</a></li>
                         <li><a href="contact.html" class="text-gray-300 hover:text-white transition-colors">Contact</a></li>
-                        <li><a href="admin.html" class="text-gray-300 hover:text-white transition-colors">Admin</a></li>
                     </ul>
                 </div>
 
@@ -247,10 +292,6 @@
                     <h4 class="text-lg font-semibold">Our Services</h4>
                     <ul class="space-y-2 text-sm">
                         <li><a href="#" class="text-gray-300 hover:text-white transition-colors">YouTube Premium</a></li>
-                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Google One Storage</a></li>
-                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Netflix Accounts</a></li>
-                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Adobe Creative Cloud</a></li>
-                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Microsoft 365</a></li>
                     </ul>
                 </div>
 
@@ -278,12 +319,12 @@
             <div class="border-t border-gray-700 mt-8 pt-8">
                 <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
                     <div class="text-gray-400 text-sm">
-                        &copy; 2024 Volmerix Enterprise. All rights reserved.
+                        &copy; 2024 - 2026 Volmerix Enterprise. All rights reserved.
                     </div>
                     <div class="flex space-x-6 text-sm">
-                        <a href="#" class="text-gray-400 hover:text-white transition-colors">Privacy Policy</a>
-                        <a href="#" class="text-gray-400 hover:text-white transition-colors">Terms of Service</a>
-                        <a href="#" class="text-gray-400 hover:text-white transition-colors">Refund Policy</a>
+                        <a href="privacy-policy.html" class="text-gray-400 hover:text-white transition-colors">Privacy Policy</a>
+                        <a href="terms-of-service.html" class="text-gray-400 hover:text-white transition-colors">Terms of Service</a>
+                        <a href="refund-policy.html" class="text-gray-400 hover:text-white transition-colors">Refund Policy</a>
                     </div>
                 </div>
             </div>
@@ -294,6 +335,7 @@
     <script src="assets/js/i18n.js?v=1.0.0"></script>
     <script src="assets/js/currency.js?v=1.0.0"></script>
     <script src="assets/js/navbar.js?v=1.0.0"></script>
+    <script src="assets/js/notifications.js?v=1.0.0"></script>
     <script src="assets/js/products.js?v=1.0.0"></script>
     <script src="assets/js/product.js?v=1.0.0"></script>
     <script src="assets/js/main.js?v=1.0.0"></script>

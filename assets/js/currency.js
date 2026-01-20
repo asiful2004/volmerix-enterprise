@@ -4,8 +4,8 @@ class CurrencyManager {
     constructor() {
         this.currentCurrency = localStorage.getItem('currency') || this.detectCurrency();
         this.rates = {
-            KRW: 1,
-            USD: 0.00075  // Approximate rate, should be updated with real API
+            KRW: 1,           // Base currency (KRW)
+            USD: 0.000678,    // 1 KRW = 0.000678 USD (1/1473.71)
         };
         this.init();
     }

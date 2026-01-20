@@ -39,13 +39,13 @@ function createNavbar() {
 
                     <!-- Social Icons - Smaller on mobile -->
                     <div class="hidden sm:flex space-x-1 md:space-x-2">
-                        <a href="#" class="text-gray-600 hover:text-blue-600 transition duration-300 p-1">
+                        <a href="https://discord.gg/Sn6FMX8avD" target="_blank" rel="noopener noreferrer" class="text-gray-600 hover:text-blue-600 transition duration-300 p-1">
                             <i class="fab fa-discord text-sm md:text-lg"></i>
                         </a>
-                        <a href="#" class="text-gray-600 hover:text-purple-600 transition duration-300 p-1">
+                        <a href="https://www.facebook.com/profile.php?id=61586824583187" target="_blank" rel="noopener noreferrer" class="text-gray-600 hover:text-purple-600 transition duration-300 p-1">
                             <i class="fab fa-facebook text-sm md:text-lg"></i>
                         </a>
-                        <a href="#" class="text-gray-600 hover:text-blue-600 transition duration-300 p-1">
+                        <a href="https://t.me/volmerixenterprise" target="_blank" rel="noopener noreferrer" class="text-gray-600 hover:text-blue-600 transition duration-300 p-1">
                             <i class="fab fa-telegram text-sm md:text-lg"></i>
                         </a>
                     </div>
@@ -92,13 +92,13 @@ function createNavbar() {
 
                     <!-- Social Icons -->
                     <div class="flex justify-center space-x-4 pt-2">
-                        <a href="#" class="text-gray-600 hover:text-blue-600 transition duration-300 p-2 bg-gray-50 rounded-full">
+                        <a href="https://discord.gg/Sn6FMX8avD" target="_blank" rel="noopener noreferrer" class="text-gray-600 hover:text-blue-600 transition duration-300 p-2 bg-gray-50 rounded-full">
                             <i class="fab fa-discord text-lg"></i>
                         </a>
-                        <a href="#" class="text-gray-600 hover:text-purple-600 transition duration-300 p-2 bg-gray-50 rounded-full">
+                        <a href="https://www.facebook.com/profile.php?id=61586824583187" target="_blank" rel="noopener noreferrer" class="text-gray-600 hover:text-purple-600 transition duration-300 p-2 bg-gray-50 rounded-full">
                             <i class="fab fa-facebook text-lg"></i>
                         </a>
-                        <a href="#" class="text-gray-600 hover:text-blue-600 transition duration-300 p-2 bg-gray-50 rounded-full">
+                        <a href="https://t.me/volmerixenterprise" target="_blank" rel="noopener noreferrer" class="text-gray-600 hover:text-blue-600 transition duration-300 p-2 bg-gray-50 rounded-full">
                             <i class="fab fa-telegram text-lg"></i>
                         </a>
                     </div>

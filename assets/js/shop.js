@@ -174,23 +174,43 @@ class ShopManager {
 
         return `
             <div class="product-card bg-white rounded-lg shadow-md overflow-hidden">
-                <div class="flex">
-                    <img src="${product.image}" alt="${name}" class="w-48 h-48 object-cover" onerror="this.src='assets/images/product/youtube.png'">
-                    <div class="flex-1 p-6">
-                        <div class="flex items-start justify-between mb-4">
-                            <div>
-                                <h3 class="text-xl font-bold mb-2">${name}</h3>
-                                <p class="text-gray-600 mb-4">${description}</p>
-                                <div class="flex items-center">
+                <!-- Mobile: Vertical Stack Layout -->
+                <div class="block md:hidden">
+                    <img src="${product.image}" alt="${name}" class="w-full h-48 object-cover" onerror="this.src='assets/images/product/youtube.png'">
+                    <div class="p-4">
+                        <h3 class="text-lg font-bold mb-2 line-clamp-2">${name}</h3>
+                        <p class="text-gray-600 mb-3 text-sm line-clamp-2">${description}</p>
+                        <div class="flex items-center mb-3">
+                            <div class="flex text-yellow-400 mr-2 text-sm">
+                                ${'★'.repeat(Math.floor(product.rating))}${'☆'.repeat(5 - Math.floor(product.rating))}
+                            </div>
+                            <span class="text-xs text-gray-600">(${product.reviews} reviews)</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl font-bold text-purple-600" data-price="${product.price}">${currencyManager ? currencyManager.formatPrice(product.price) : `₩${product.price.toLocaleString()}`}</span>
+                            <button onclick="viewProduct(${product.id})" class="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded text-sm transition duration-300" data-i18n="buy-now">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tablet/Desktop: Horizontal Layout -->
+                <div class="hidden md:flex">
+                    <img src="${product.image}" alt="${name}" class="w-32 lg:w-40 xl:w-48 h-32 lg:h-40 xl:h-48 object-contain flex-shrink-0 bg-gray-50" onerror="this.src='assets/images/product/youtube.png'">
+                    <div class="flex-1 p-4 lg:p-6">
+                        <div class="flex items-start justify-between h-full">
+                            <div class="flex-1 pr-4">
+                                <h3 class="text-lg lg:text-xl font-bold mb-2 line-clamp-2">${name}</h3>
+                                <p class="text-gray-600 mb-3 lg:mb-4 text-sm lg:text-base line-clamp-2 lg:line-clamp-3">${description}</p>
+                                <div class="flex items-center mb-3 lg:mb-4">
                                     <div class="flex text-yellow-400 mr-2">
                                         ${'★'.repeat(Math.floor(product.rating))}${'☆'.repeat(5 - Math.floor(product.rating))}
                                     </div>
                                     <span class="text-sm text-gray-600">(${product.reviews} reviews)</span>
                                 </div>
                             </div>
-                            <div class="text-right">
-                                <span class="text-3xl font-bold text-purple-600 mb-4 block" data-price="${product.price}">${currencyManager ? currencyManager.formatPrice(product.price) : `₩${product.price.toLocaleString()}`}</span>
-                                <button onclick="viewProduct(${product.id})" class="bg-purple-600 hover:bg-purple-700 text-white px-6 py-2 rounded transition duration-300" data-i18n="buy-now">Buy Now</button>
+                            <div class="text-right flex-shrink-0">
+                                <span class="text-2xl lg:text-3xl font-bold text-purple-600 mb-3 lg:mb-4 block" data-price="${product.price}">${currencyManager ? currencyManager.formatPrice(product.price) : `₩${product.price.toLocaleString()}`}</span>
+                                <button onclick="viewProduct(${product.id})" class="bg-purple-600 hover:bg-purple-700 text-white px-4 lg:px-6 py-2 rounded transition duration-300" data-i18n="buy-now">Buy Now</button>
                             </div>
                         </div>
                     </div>

@@ -73,11 +73,10 @@ if (file_put_contents($contactsFile, json_encode($contacts, JSON_PRETTY_PRINT)))
     $discordWebhookUrl = 'https://discord.com/api/webhooks/1462099780585914368/tpa-afYCxA3pN6_ooKCttcYCMp6JquygXOIQmJP98jPBdf7JwSVxHgP8dBLCz3L_l4BW';
 
     $discordMessage = [
-        'content' => '📧 **New Contact Form Submission**',
+        'content' => '📧 **New Contact Message**',
         'embeds' => [
             [
                 'title' => 'Contact Details',
-                'color' => 15158332, // Red color
                 'fields' => [
                     [
                         'name' => 'Name',
@@ -91,7 +90,9 @@ if (file_put_contents($contactsFile, json_encode($contacts, JSON_PRETTY_PRINT)))
                     ],
                     [
                         'name' => 'Message',
-                        'value' => $contact['message'],
+                        'value' => strlen($contact['message']) > 500 ?
+                            substr($contact['message'], 0, 500) . '...' :
+                            $contact['message'],
                         'inline' => false
                     ],
                     [
@@ -101,7 +102,7 @@ if (file_put_contents($contactsFile, json_encode($contacts, JSON_PRETTY_PRINT)))
                     ]
                 ],
                 'footer' => [
-                    'text' => 'Volmerix Enterprise Contact Form'
+                    'text' => '© 2024-2026 Volmerix Enterprise'
                 ]
             ]
         ],
